@@ -157,5 +157,31 @@
     <p>© 2026 Vivitek. All rights reserved.</p>
     <p>Knowledge for Everyday Life</p>
   </footer>
+  
+<script>
+  const searchInput = document.getElementById("searchInput");
+  const searchMessage = document.getElementById("searchMessage");
+  const searchableCards = document.querySelectorAll("main .card");
+
+  searchInput.addEventListener("input", function () {
+    const query = this.value.trim().toLowerCase();
+    let matches = 0;
+
+    searchableCards.forEach(function (card) {
+      const found = card.innerText.toLowerCase().includes(query);
+      card.style.display = found ? "" : "none";
+      if (found) matches++;
+    });
+
+    if (query === "") {
+      searchMessage.textContent = "";
+    } else if (matches === 0) {
+      searchMessage.textContent = "No matching content found.";
+    } else {
+      searchMessage.textContent = matches + " matching section(s) found.";
+    }
+  });
+</script>
+
 </body>
 </html>
