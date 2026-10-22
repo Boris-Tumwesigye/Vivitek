@@ -1,1 +1,155 @@
-# Vivitek
+index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b65">
+  <title>Vivitek | Knowledge for Everyday Life</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172b4d;
+      line-height: 1.6;
+    }
+    header {
+      background: #123b65;
+      color: white;
+      padding: 25px 18px;
+      text-align: center;
+    }
+    header h1 { margin: 0; font-size: 36px; }
+    header p { margin: 5px 0 0; }
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      background: white;
+    }
+    nav a {
+      color: #123b65;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+    }
+    .hero {
+      background: #dcecff;
+      text-align: center;
+      padding: 38px 20px;
+    }
+    .hero h2 { font-size: 27px; margin: 0 0 10px; }
+    main { max-width: 900px; margin: auto; padding: 20px; }
+    .topics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 22px;
+      box-shadow: 0 3px 12px #172b4d12;
+    }
+    .card h3 { margin-top: 0; color: #123b65; }
+    .card a {
+      display: inline-block;
+      margin-top: 8px;
+      color: #075bb5;
+      font-weight: bold;
+    }
+    section { margin-bottom: 30px; }
+    footer {
+      background: #123b65;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Vivitek</h1>
+    <p>Knowledge for Everyday Life</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#health">Health</a>
+    <a href="#news">News</a>
+    <a href="#technology">Technology</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <div class="hero" id="home">
+    <h2>Discover. Learn. Stay Informed.</h2>
+    <p>Your place for health information, news and technology.</p>
+  </div>
+
+  <main>
+    <section>
+      <h2>Explore Our Topics</h2>
+      <div class="topics">
+        <article class="card" id="health">
+          <h3>❤️ Health</h3>
+          <p>Explore wellness, disease prevention and practical health information.</p>
+          <a href="#health-articles">Explore Health</a>
+        </article>
+
+        <article class="card" id="news">
+          <h3>📰 News</h3>
+          <p>Discover stories, current affairs and important community updates.</p>
+          <a href="#news-articles">Explore News</a>
+        </article>
+
+        <article class="card" id="technology">
+          <h3>💻 Technology</h3>
+          <p>Learn about AI, smartphones, apps and digital innovation.</p>
+          <a href="#technology-articles">Explore Technology</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="health-articles">
+      <h2>Health</h2>
+      <article class="card">
+        <h3>Building Healthy Daily Habits</h3>
+        <p>Start with safe drinking water, balanced meals, regular activity and enough rest.</p>
+        <p><small>General information only. Consult a qualified health professional for personal medical advice.</small></p>
+      </article>
+    </section>
+
+    <section id="news-articles">
+      <h2>News</h2>
+      <article class="card">
+        <h3>Welcome to Vivitek News</h3>
+        <p>Our news section is being developed. Verified news stories will be added here.</p>
+      </article>
+    </section>
+
+    <section id="technology-articles">
+      <h2>Technology</h2>
+      <article class="card">
+        <h3>How Technology Can Help You</h3>
+        <p>Digital tools can help people communicate, learn new skills and grow businesses.</p>
+      </article>
+    </section>
+
+    <section id="about" class="card">
+      <h2>About Vivitek</h2>
+      <p>Vivitek is a growing digital platform designed to share useful knowledge about health, news and technology.</p>
+      <p>Our mission is to make helpful information easier to discover.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Vivitek. All rights reserved.</p>
+    <p>Knowledge for Everyday Life</p>
+  </footer>
+</body>
+</html>
