@@ -1,1 +1,198 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Vivitek</title>
+  <meta name="description" content="Contact Vivitek with questions, feedback, and story suggestions.">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #f3f7f8;
+      color: #263238;
+    }
+
+    header {
+      background: #087e8b;
+      color: white;
+      text-align: center;
+      padding: 22px 15px;
+    }
+
+    nav {
+      background: #ffffff;
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    nav a {
+      color: #087e8b;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 28px auto;
+      padding: 25px;
+      background: white;
+      border-radius: 14px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    h1 {
+      color: #087e8b;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #087e8b;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .note {
+      background: #eef7f7;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #52616b;
+    }
+
+    @media (max-width: 480px) {
+      main {
+        margin: 16px 10px;
+        padding: 18px;
+      }
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h2>Vivitek</h2>
+    <p>Knowledge for Everyday Life</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="health-article.html">Health</a>
+    <a href="news-article.html">News</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <main>
+    <h1>Contact Us</h1>
+
+    <p>We would love to hear from you! Contact Vivitek with your questions, feedback, ideas, or suggestions for articles.</p>
+
+    <form id="contactForm">
+      <label for="name">Your name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="email">Your email address</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="subject">Reason for contacting us</label>
+      <select id="subject" name="subject" required>
+        <option value="">Choose a topic</option>
+        <option>General question</option>
+        <option>News tip or story suggestion</option>
+        <option>Health article feedback</option>
+        <option>Technology topic</option>
+        <option>Partnership or advertising</option>
+        <option>Other</option>
+      </select>
+
+      <label for="message">Your message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <button type="submit">Prepare Email Message</button>
+    </form>
+
+    <div class="note">
+      <strong>How to send your message</strong>
+      <p>This form will prepare an email using your device's email app. It does not send the message automatically.</p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Vivitek. Knowledge for Everyday Life.</p>
+    <a href="index.html">Return to homepage</a>
+  </footer>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value.trim();
+
+      const recipient = prompt("Enter the email address where Vivitek should receive messages:");
+      if (!recipient || !recipient.includes("@")) {
+        alert("Please enter a valid Vivitek contact email address to continue.");
+        return;
+      }
+
+      const emailSubject = encodeURIComponent("Vivitek Contact: " + subject);
+      const emailBody = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Reply email: " + email + "\n" +
+        "Topic: " + subject + "\n\n" +
+        "Message:\n" + message
+      );
+
+      window.location.href = "mailto:" + recipient +
+        "?subject=" + emailSubject + "&body=" + emailBody;
+    });
+  </script>
+
+</body>
+</html>
