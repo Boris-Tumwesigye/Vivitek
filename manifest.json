@@ -1,1 +1,24 @@
 
+
+{
+  "name": "Vivitek - Knowledge for Everyday Life",
+  "short_name": "Vivitek",
+  "description": "Read health, education, technology and news articles.",
+  "start_url": "/Vivitek/index.html",
+  "scope": "/Vivitek/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#123b65",
+  "icons": [
+    {
+      "src": "/Vivitek/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/Vivitek/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
