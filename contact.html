@@ -168,33 +168,5 @@
     <a href="index.html">Return to homepage</a>
   </footer>
 
-  <script>
-    document.getElementById("contactForm").addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const subject = document.getElementById("subject").value;
-      const message = document.getElementById("message").value.trim();
-
-      const recipient = prompt("Enter the email address where Vivitek should receive messages:");
-      if (!recipient || !recipient.includes("@")) {
-        alert("Please enter a valid Vivitek contact email address to continue.");
-        return;
-      }
-
-      const emailSubject = encodeURIComponent("Vivitek Contact: " + subject);
-      const emailBody = encodeURIComponent(
-        "Name: " + name + "\n" +
-        "Reply email: " + email + "\n" +
-        "Topic: " + subject + "\n\n" +
-        "Message:\n" + message
-      );
-
-      window.location.href = "mailto:" + recipient +
-        "?subject=" + emailSubject + "&body=" + emailBody;
-    });
-  </script>
-
 </body>
 </html>
