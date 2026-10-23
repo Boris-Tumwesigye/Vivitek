@@ -7,7 +7,9 @@ const FILES_TO_CACHE = [
   "/Vivitek/icon-192.png",
   "/Vivitek/icon-512.png",
     "/Vivitek/health-article.html",
-  "/Vivitek/news-article.html"
+  "/Vivitek/news-article.html",
+  "/Vivitek/contact.html"
+  
 ];
 
 self.addEventListener("install", (event) => {
