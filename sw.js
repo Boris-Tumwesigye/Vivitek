@@ -8,6 +8,7 @@ const FILES_TO_CACHE = [
   "/Vivitek/icon-512.png",
     "/Vivitek/health-article.html",
   "/Vivitek/malaria.html",
+  "/Vivitek/mosquito-malaria.png",
   "/Vivitek/news-article.html",
   "/Vivitek/contact.html",
   "/Vivitek/advertise.html"
