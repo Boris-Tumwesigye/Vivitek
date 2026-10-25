@@ -36,12 +36,38 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
+  const url = new URL(event.request.url);
+
+  if (url.origin !== self.location.origin) return;
+
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      return cachedResponse || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((response) => {
+        if (response && response.ok) {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, copy);
+          });
+        }
+        return response;
+      })
+      .catch(async () => {
+        const cachedResponse = await caches.match(event.request);
+        if (cachedResponse) return cachedResponse;
+
+        if (event.request.mode === "navigate") {
+          return caches.match("/Vivitek/");
+        }
+
+        return new Response("You are offline and this content is not cached yet.", {
+          status: 503,
+          headers: { "Content-Type": "text/plain" }
+        });
+      })
   );
 });
