@@ -39,6 +39,7 @@ self.addEventListener("activate", (event) => {
 
 
 
+
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
 
@@ -48,27 +49,41 @@ self.addEventListener("fetch", (event) => {
 
   event.respondWith(
     fetch(event.request)
-      .then((response) => {
+      .then(async (response) => {
         if (response && response.ok) {
-          const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(event.request, copy);
-          });
+          const contentType = response.headers.get("content-type") || "";
+
+          if (
+            contentType.includes("text/html") ||
+            url.pathname.endsWith(".html") ||
+            url.pathname.endsWith("/")
+          ) {
+            const copy = response.clone();
+            const cache = await caches.open(CACHE_NAME);
+            await cache.put(event.request, copy);
+          }
         }
+
         return response;
       })
       .catch(async () => {
         const cachedResponse = await caches.match(event.request);
+
         if (cachedResponse) return cachedResponse;
 
         if (event.request.mode === "navigate") {
-          return caches.match("/Vivitek/");
+          const homepage = await caches.match("/Vivitek/");
+          if (homepage) return homepage;
         }
 
-        return new Response("You are offline and this content is not cached yet.", {
-          status: 503,
-          headers: { "Content-Type": "text/plain" }
-        });
+        return new Response(
+          "You are offline and this page has not been cached yet.",
+          {
+            status: 503,
+            headers: { "Content-Type": "text/plain; charset=utf-8" }
+          }
+        );
       })
   );
 });
+
