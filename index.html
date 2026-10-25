@@ -467,5 +467,18 @@ main .card p {
     });
   }
 </script>
+  <script>
+  const notificationBell = document.getElementById("notificationBell");
+  const notificationPanel = document.getElementById("notificationPanel");
+  const closeNotificationPanel = document.getElementById("closeNotificationPanel");
+
+  notificationBell.addEventListener("click", function () {
+    notificationPanel.hidden = !notificationPanel.hidden;
+  });
+
+  closeNotificationPanel.addEventListener("click", function () {
+    notificationPanel.hidden = true;
+  });
+</script>
 </body>
 </html>
