@@ -556,52 +556,6 @@ const notificationBell = document.getElementById("notificationBell");
 const notificationPanel = document.getElementById("notificationPanel");
 const closeNotificationPanel = document.getElementById("closeNotificationPanel");
 
-function updateNotifications() {
-  notificationPanel.querySelectorAll(".article-notification")
-    .forEach(item => item.remove());
-
-  const closeButton = document.getElementById("closeNotificationPanel");
-
-  const articleLinks = Array.from(
-    document.querySelectorAll("main a[href$='.html']")
-  ).filter(link => {
-    const text = link.textContent.trim().toLowerCase();
-    return text.includes("read article") ||
-           text.includes("read full article");
-  });
-
-  const seen = new Set();
-
-  articleLinks.forEach(link => {
-    const url = new URL(link.href, window.location.href).href;
-    if (seen.has(url)) return;
-    seen.add(url);
-
-    const container = link.closest("div");
-    const heading = container ? container.querySelector("h3, h2") : null;
-    const title = heading
-      ? heading.textContent.trim()
-      : link.textContent.trim();
-
-    const notification = document.createElement("a");
-    notification.className = "article-notification";
-    notification.href = url;
-    notification.style.display = "block";
-    notification.style.padding = "10px 0";
-    notification.style.borderBottom = "1px solid #eee";
-    notification.style.color = "#b00020";
-    notification.style.textDecoration = "none";
-    notification.textContent = "📰 " + title;
-
-    notificationPanel.insertBefore(notification, closeButton);
-  });
-
-  if (articleLinks.length === 0) {
-    const message = document.createElement("p");
-    message.className = "article-notification";
-    message.textContent = "No published article links found yet.";
-    notificationPanel.insertBefore(message, closeButton);
-  }
 }
 
 updateNotifications();
