@@ -1,1 +1,239 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#075985">
+  <title>Live Weather | Vivitek</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; font-family: Arial, sans-serif;
+      background: #f0f9ff; color: #123047;
+    }
+    header {
+      background: #075985; color: white;
+      padding: 22px 16px; text-align: center;
+    }
+    header h1 { margin: 0 0 6px; }
+    header p { margin: 0; }
+    main { max-width: 650px; margin: auto; padding: 18px; }
+    .panel {
+      background: white; border-radius: 16px;
+      padding: 18px; margin-bottom: 16px;
+      box-shadow: 0 3px 12px #0000000d;
+    }
+    form { display: flex; gap: 8px; }
+    input, button {
+      padding: 12px; border-radius: 8px;
+      font-size: 16px;
+    }
+    input { min-width: 0; flex: 1; border: 1px solid #94a3b8; }
+    button {
+      border: 0; background: #0284c7;
+      color: white; cursor: pointer;
+    }
+    button:disabled { opacity: .6; }
+    #conditions { text-align: center; }
+    #icon { font-size: 52px; }
+    #temperature { font-size: 44px; font-weight: bold; }
+    #details { line-height: 1.9; }
+    .forecast {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+    .day {
+      background: #e0f2fe; padding: 12px;
+      border-radius: 10px; text-align: center;
+    }
+    .day strong, .day span { display: block; margin: 6px 0; }
+    #status { line-height: 1.5; }
+    footer { text-align: center; padding: 20px; font-size: 13px; }
+    a { color: #075985; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>🌦️ Vivitek Weather</h1>
+  <p>Knowledge for Everyday Life</p>
+</header>
+
+<main>
+  <section class="panel">
+    <h2>Weather anywhere</h2>
+    <p>Enter a city or town name.</p>
+    <form id="searchForm">
+      <input id="city" type="search"
+        placeholder="e.g. Juba, Kampala, Nairobi"
+        aria-label="City or town" required>
+      <button id="searchButton" type="submit">Search</button>
+    </form>
+    <p id="status" role="status">Search for a location to begin.</p>
+  </section>
+
+  <section class="panel" id="conditions" aria-live="polite">
+    <h2 id="place">Choose a location</h2>
+    <div id="icon">🌍</div>
+    <div id="temperature">--°C</div>
+    <p id="description">Current weather will appear here.</p>
+    <div id="details"></div>
+    <p id="updated"></p>
+    <button id="refresh" type="button" hidden>Refresh weather</button>
+  </section>
+
+  <section class="panel">
+    <h2>5-day forecast</h2>
+    <div id="forecast" class="forecast">
+      <p>Search for a city to see its forecast.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  Weather data by
+  <a href="https://open-meteo.com/" target="_blank"
+     rel="noopener">Open-Meteo</a>.
+  Forecasts may differ from observed local conditions.
+  <p><a href="./index.html">Back to Vivitek home</a></p>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function weatherInfo(code) {
+  if (code === 0) return ["☀️", "Clear sky"];
+  if (code === 1) return ["🌤️", "Mainly clear"];
+  if (code === 2) return ["⛅", "Partly cloudy"];
+  if (code === 3) return ["☁️", "Overcast"];
+  if ([45, 48].includes(code)) return ["🌫️", "Fog"];
+  if ([51, 53, 55, 56, 57].includes(code))
+    return ["🌦️", "Drizzle"];
+  if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code))
+    return ["🌧️", "Rain"];
+  if ([71, 73, 75, 77, 85, 86].includes(code))
+    return ["❄️", "Snow"];
+  if ([95, 96, 99].includes(code))
+    return ["⛈️", "Thunderstorm"];
+  return ["🌡️", "Variable conditions"];
+}
+
+function showStatus(message) {
+  $("status").textContent = message;
+}
+
+async function getJSON(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Weather service unavailable.");
+  return response.json();
+}
+
+async function loadWeather(city) {
+  const button = $("searchButton");
+  button.disabled = true;
+  $("refresh").hidden = true;
+  showStatus("Finding location and loading weather...");
+
+  try {
+    const geoURL =
+      "https://geocoding-api.open-meteo.com/v1/search?name=" +
+      encodeURIComponent(city) + "&count=10&language=en&format=json";
+    const geo = await getJSON(geoURL);
+
+    if (!geo.results || !geo.results.length) {
+      throw new Error("No matching place found. Try another spelling.");
+    }
+
+    let matches = geo.results;
+    let chosen = matches[0];
+
+    if (matches.length > 1) {
+      const choices = matches.map((p, i) =>
+        `${i + 1}. ${p.name}, ${p.admin1 ? p.admin1 + ", " : ""}${p.country}`
+      ).join("\n");
+      const answer = prompt("Choose your location:\n" + choices, "1");
+      if (answer === null) {
+        showStatus("Location selection cancelled.");
+        return;
+      }
+      const index = Number(answer) - 1;
+      if (!Number.isInteger(index) || index < 0 || index >= matches.length) {
+        throw new Error("Invalid choice. Please search again.");
+      }
+      chosen = matches[index];
+    }
+
+    const params = new URLSearchParams({
+      latitude: chosen.latitude,
+      longitude: chosen.longitude,
+      current: "temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m",
+      daily: "weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max",
+      forecast_days: "5",
+      timezone: "auto"
+    });
+
+    const data = await getJSON(
+      "https://api.open-meteo.com/v1/forecast?" + params.toString()
+    );
+
+    if (!data.current || !data.daily) {
+      throw new Error("Weather data was incomplete. Try again.");
+    }
+
+    const current = data.current;
+    const info = weatherInfo(current.weather_code);
+    $("place").textContent =
+      [chosen.name, chosen.admin1, chosen.country].filter(Boolean).join(", ");
+    $("icon").textContent = info[0];
+    $("temperature").textContent =
+      Math.round(current.temperature_2m) + "°C";
+    $("description").textContent = info[1];
+    $("details").textContent =
+      `Feels like ${Math.round(current.apparent_temperature)}°C · ` +
+      `Humidity ${current.relative_humidity_2m}% · ` +
+      `Wind ${current.wind_speed_10m} km/h`;
+
+    $("updated").textContent =
+      "Weather data time: " + current.time.replace("T", " ") +
+      (data.timezone ? " (" + data.timezone + ")" : "");
+
+    $("forecast").replaceChildren();
+    data.daily.time.forEach((date, i) => {
+      const day = document.createElement("div");
+      day.className = "day";
+      const dayName = new Date(date + "T12:00:00")
+        .toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" });
+      const dayInfo = weatherInfo(data.daily.weather_code[i]);
+      const items = [
+        ["strong", dayName],
+        ["span", dayInfo[0] + " " + dayInfo[1]],
+        ["span", `${Math.round(data.daily.temperature_2m_max[i])}° / ${Math.round(data.daily.temperature_2m_min[i])}°C`],
+        ["span", `Rain chance: ${data.daily.precipitation_probability_max[i] ?? "—"}%`]
+      ];
+      items.forEach(([tag, value]) => {
+        const el = document.createElement(tag);
+        el.textContent = value;
+        day.appendChild(el);
+      });
+      $("forecast").appendChild(day);
+    });
+
+    showStatus("Weather loaded successfully.");
+    $("refresh").hidden = false;
+    $("refresh").onclick = () => loadWeather(chosen.name);
+  } catch (error) {
+    showStatus(error.message || "Could not load weather. Check your internet and try again.");
+  } finally {
+    button.disabled = false;
+  }
+}
+
+$("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  const city = $("city").value.trim();
+  if (city) loadWeather(city);
+});
+</script>
+</body>
+</html>
+
