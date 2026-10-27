@@ -12,6 +12,7 @@ const FILES_TO_CACHE = [
   "/Vivitek/news-article.html",
   "/Vivitek/contact.html",
   "/Vivitek/advertise.html",
+  "/Vivitek/SSudan-14-Dec-2018.jpg",
 "/Vivitek/typhoid.html"
 ];
 
