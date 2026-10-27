@@ -673,6 +673,9 @@ notificationBell.addEventListener("click", function () {
 
 closeNotificationPanel.addEventListener("click", function () {
   notificationPanel.hidden = true;
+  setInterval(function () {
+  updateNotifications();
+}, 30000);
 });
 </script>
 
