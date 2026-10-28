@@ -1,1 +1,345 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert currencies, check exchange rates and explore foreign exchange market news on Vivitek.">
+  <title>Foreign Exchange | Vivitek</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f6fb;
+      color: #243447;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #153e63;
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    header h1 { margin: 0; }
+    header p { margin-bottom: 0; }
+
+    nav {
+      background: #fff;
+      padding: 14px;
+      text-align: center;
+    }
+
+    nav a {
+      color: #153e63;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    main {
+      max-width: 850px;
+      margin: 24px auto;
+      padding: 0 14px;
+    }
+
+    section {
+      background: white;
+      margin-bottom: 22px;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 14px #0000000c;
+    }
+
+    h2 { color: #153e63; margin-top: 0; }
+
+    label {
+      display: block;
+      margin: 12px 0 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      background: white;
+      font-size: 16px;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 7px;
+      background: #b00020;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button.secondary { background: #153e63; }
+
+    .result {
+      margin-top: 18px;
+      padding: 15px;
+      background: #edf5fc;
+      border-radius: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .rate-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+    }
+
+    .rate-card {
+      padding: 13px;
+      background: #f2f6fb;
+      border-radius: 8px;
+    }
+
+    .rate-card strong {
+      display: block;
+      color: #153e63;
+    }
+
+    .news-link {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid #e2e8f0;
+      color: #b00020;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .news-link:last-child { border-bottom: 0; }
+
+    .muted { color: #64748b; font-size: 14px; }
+
+    footer {
+      margin-top: 30px;
+      padding: 24px 12px;
+      background: #153e63;
+      color: white;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Vivitek Foreign Exchange</h1>
+    <p>Currency conversion, exchange rates and market news</p>
+  </header>
+
+  <nav>
+    <a href="index.html">← Back to Vivitek Homepage</a>
+  </nav>
+
+  <main>
+    <section>
+      <h2>Currency Converter</h2>
+      <p>Convert currencies using the latest available reference rates.</p>
+
+      <label for="amount">Amount</label>
+      <input id="amount" type="number" min="0" step="any" value="1">
+
+      <label for="fromCurrency">From currency</label>
+      <select id="fromCurrency">
+        <option value="USD">USD — US Dollar</option>
+        <option value="SSP">SSP — South Sudanese Pound</option>
+        <option value="UGX">UGX — Ugandan Shilling</option>
+        <option value="KES">KES — Kenyan Shilling</option>
+        <option value="EUR">EUR — Euro</option>
+        <option value="GBP">GBP — British Pound</option>
+      </select>
+
+      <label for="toCurrency">To currency</label>
+      <select id="toCurrency">
+        <option value="UGX">UGX — Ugandan Shilling</option>
+        <option value="SSP">SSP — South Sudanese Pound</option>
+        <option value="USD">USD — US Dollar</option>
+        <option value="KES">KES — Kenyan Shilling</option>
+        <option value="EUR">EUR — Euro</option>
+        <option value="GBP">GBP — British Pound</option>
+      </select>
+
+      <button class="secondary" id="swapButton" type="button">
+        Swap currencies ⇅
+      </button>
+
+      <button id="convertButton" type="button">
+        Convert Currency
+      </button>
+
+      <div class="result" id="conversionResult" aria-live="polite">
+        Enter an amount and select currencies to begin.
+      </div>
+
+      <p class="muted">
+        Rates are indicative reference rates, not guaranteed bank,
+        cash-exchange or money-transfer rates. Internet access is required.
+      </p>
+    </section>
+
+    <section>
+      <h2>Exchange Rate Snapshot</h2>
+      <p>Reference rates against 1 US dollar.</p>
+
+      <div class="rate-list" id="rateList">
+        <p>Loading exchange rates...</p>
+      </div>
+
+      <p class="muted" id="rateDate">
+        Rates will appear when the data source responds.
+      </p>
+    </section>
+
+    <section>
+      <h2>Forex Market News</h2>
+      <p>
+        Explore currency-market reports, economic developments
+        and foreign exchange analysis from established publishers.
+      </p>
+
+      <a class="news-link"
+         href="https://www.reuters.com/markets/currencies/"
+         target="_blank" rel="noopener noreferrer">
+        Reuters — Currency Markets ↗
+      </a>
+
+      <a class="news-link"
+         href="https://www.investing.com/currencies/"
+         target="_blank" rel="noopener noreferrer">
+        Investing.com — Currency Markets ↗
+      </a>
+
+      <a class="news-link"
+         href="https://www.xe.com/currencynews/"
+         target="_blank" rel="noopener noreferrer">
+        XE — Currency News and Analysis ↗
+      </a>
+
+      <p class="muted">
+        These links open external websites. Their articles and updates
+        are provided by those publishers, not by Vivitek.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Vivitek. All rights reserved.</p>
+    <p>Knowledge for Everyday Life</p>
+  </footer>
+
+  <script>
+    const amountInput = document.getElementById("amount");
+    const fromCurrency = document.getElementById("fromCurrency");
+    const toCurrency = document.getElementById("toCurrency");
+    const resultBox = document.getElementById("conversionResult");
+
+    async function getRate(from, to) {
+      if (from === to) {
+        return { rate: 1, date: new Date().toISOString().slice(0, 10) };
+      }
+
+      const url =
+        "https://api.frankfurter.dev/v2/rate/" +
+        encodeURIComponent(from) + "/" + encodeURIComponent(to);
+
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        throw new Error("A reference rate is unavailable for this pair.");
+      }
+
+      return await response.json();
+    }
+
+    document.getElementById("convertButton").addEventListener("click", async function () {
+      const amount = Number(amountInput.value);
+      const from = fromCurrency.value;
+      const to = toCurrency.value;
+
+      if (amountInput.value.trim() === "" ||
+          !Number.isFinite(amount) || amount < 0) {
+        resultBox.textContent = "Please enter a valid, non-negative amount.";
+        return;
+      }
+
+      resultBox.textContent = "Getting the latest available reference rate...";
+
+      try {
+        const data = await getRate(from, to);
+        const converted = amount * data.rate;
+
+        resultBox.textContent =
+          amount.toLocaleString("en-US") + " " + from +
+          " = " + converted.toLocaleString("en-US", {
+            maximumFractionDigits: 4
+          }) + " " + to +
+          ". Rate date: " + data.date +
+          ". 1 " + from + " = " + data.rate + " " + to + ".";
+
+      } catch (error) {
+        resultBox.textContent =
+          "Sorry, a reference rate for " + from + " to " + to +
+          " is unavailable from this data source. This can happen " +
+          "when a currency is not supported. Try another pair or check " +
+          with a local bank or exchange provider.";
+      }
+    });
+
+    document.getElementById("swapButton").addEventListener("click", function () {
+      const previousFrom = fromCurrency.value;
+      fromCurrency.value = toCurrency.value;
+      toCurrency.value = previousFrom;
+      document.getElementById("convertButton").click();
+    });
+
+    async function loadRateSnapshot() {
+      const rateList = document.getElementById("rateList");
+      const rateDate = document.getElementById("rateDate");
+      const currencies = ["EUR", "GBP", "UGX", "KES", "SSP"];
+
+      rateList.replaceChildren();
+
+      for (const currency of currencies) {
+        const card = document.createElement("div");
+        card.className = "rate-card";
+
+        const heading = document.createElement("strong");
+        heading.textContent = "USD → " + currency;
+
+        const value = document.createElement("span");
+        value.textContent = "Loading...";
+
+        card.append(heading, value);
+        rateList.appendChild(card);
+
+        try {
+          const data = await getRate("USD", currency);
+          value.textContent = data.rate.toLocaleString("en-US", {
+            maximumFractionDigits: 4
+          });
+          rateDate.textContent =
+            "Reference rate date: " + data.date +
+            ". Source: Frankfurter API.";
+        } catch (error) {
+          value.textContent = "Unavailable";
+        }
+      }
+    }
+
+    loadRateSnapshot();
+  </script>
+</body>
+</html>
