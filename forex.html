@@ -338,39 +338,68 @@ async function getRate(from, to) {
       document.getElementById("convertButton").click();
     });
 
-    async function loadRateSnapshot() {
-      const rateList = document.getElementById("rateList");
-      const rateDate = document.getElementById("rateDate");
-      const currencies = ["EUR", "GBP", "UGX", "KES", "SSP"];
+    
+async function loadRateSnapshot() {
+  const rateList = document.getElementById("rateList");
+  const rateDate = document.getElementById("rateDate");
+  const currencies = ["EUR", "GBP", "UGX", "KES", "SSP"];
 
-      rateList.replaceChildren();
+  rateList.replaceChildren();
+  rateDate.textContent = "Fetching available reference rates...";
 
-      for (const currency of currencies) {
-        const card = document.createElement("div");
-        card.className = "rate-card";
+  const cards = currencies.map(currency => {
+    const card = document.createElement("div");
+    card.className = "rate-card";
 
-        const heading = document.createElement("strong");
-        heading.textContent = "USD → " + currency;
+    const heading = document.createElement("strong");
+    heading.textContent = "USD → " + currency;
 
-        const value = document.createElement("span");
-        value.textContent = "Loading...";
+    const value = document.createElement("span");
+    value.textContent = "Loading...";
 
-        card.append(heading, value);
-        rateList.appendChild(card);
+    card.append(heading, value);
+    rateList.appendChild(card);
 
-        try {
-          const data = await getRate("USD", currency);
-          value.textContent = data.rate.toLocaleString("en-US", {
-            maximumFractionDigits: 4
-          });
-          rateDate.textContent =
-            "Reference rate date: " + data.date +
-            ". Source: Frankfurter API.";
-        } catch (error) {
-          value.textContent = "Unavailable";
-        }
+    return { currency, value };
+  });
+
+  const results = await Promise.allSettled(
+    cards.map(({ currency }) => getRate("USD", currency))
+  );
+
+  let successfulRates = 0;
+  let latestDate = "";
+
+  results.forEach((result, index) => {
+    const currency = cards[index].currency;
+    const value = cards[index].value;
+
+    if (result.status === "fulfilled") {
+      value.textContent = result.value.rate.toLocaleString("en-US", {
+        maximumFractionDigits: 4
+      });
+
+      successfulRates++;
+
+      if (result.value.date > latestDate) {
+        latestDate = result.value.date;
       }
+    } else {
+      value.textContent = "Unavailable";
     }
+  });
+
+  if (successfulRates > 0) {
+    rateDate.textContent =
+      "Reference rate date: " + latestDate +
+      ". Source: Frankfurter API. " +
+      successfulRates + " of " + currencies.length +
+      " rates loaded.";
+  } else {
+    rateDate.textContent =
+      "Rates could not be loaded. Check your internet connection and try again.";
+  }
+}
 
     loadRateSnapshot();
   </script>
