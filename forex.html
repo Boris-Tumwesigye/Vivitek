@@ -246,7 +246,7 @@
     const toCurrency = document.getElementById("toCurrency");
     const resultBox = document.getElementById("conversionResult");
 
-    async function getRate(from, to) {
+    const url = `https://api.frankfurter.dev/v1/latest?base=${from}&symbols=${to}`;
       if (from === to) {
         return { rate: 1, date: new Date().toISOString().slice(0, 10) };
       }
