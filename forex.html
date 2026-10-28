@@ -248,12 +248,20 @@
     const rateCache = new Map();
 
     
+
 async function getRate(from, to) {
   if (from === to) {
     return {
       rate: 1,
       date: new Date().toISOString().slice(0, 10)
     };
+  }
+
+  const cacheKey = `${from}_${to}`;
+  const cachedRate = rateCache.get(cacheKey);
+
+  if (cachedRate && Date.now() - cachedRate.savedAt < 3600000) {
+    return cachedRate.data;
   }
 
   const url =
@@ -274,11 +282,19 @@ async function getRate(from, to) {
     throw new Error("The API did not return the requested exchange rate.");
   }
 
-  return {
+  const result = {
     rate: data.rates[to],
     date: data.date
   };
+
+  rateCache.set(cacheKey, {
+    data: result,
+    savedAt: Date.now()
+  });
+
+  return result;
 }
+
 
 
     document.getElementById("convertButton").addEventListener("click", async function () {
