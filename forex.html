@@ -353,6 +353,7 @@ try {
 async function loadRateSnapshot() {
   const rateList = document.getElementById("rateList");
   const rateDate = document.getElementById("rateDate");
+
   const currencies = ["EUR", "GBP", "UGX", "KES", "SSP"];
 
   rateList.replaceChildren();
@@ -374,60 +375,55 @@ async function loadRateSnapshot() {
     return { currency, value };
   });
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 8000);
+
   try {
-    const controller = new AbortController();
-const timeoutId = setTimeout(() => controller.abort(), 8000);
-
-let response;
-
-try {
-  response = await fetch(
-    "https://open.er-api.com/v6/latest/USD",
-    { signal: controller.signal }
-  );
-} finally {
-  clearTimeout(timeoutId);
-}
+    const response = await fetch(
+      "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json",
+      { signal: controller.signal }
+    );
 
     if (!response.ok) {
-      throw new Error("Exchange-rate service unavailable.");
+      throw new Error("Exchange-rate request failed.");
     }
 
     const data = await response.json();
+    const rates = data.usd;
 
-    if (data.result !== "success" || !data.rates) {
-      throw new Error("Exchange rates were not returned.");
+    if (!rates) {
+      throw new Error("No exchange rates returned.");
     }
 
-    let successfulRates = 0;
+    let available = 0;
 
     cards.forEach(({ currency, value }) => {
-      const rate = data.rates[currency];
+      const rate = rates[currency.toLowerCase()];
 
       if (typeof rate === "number") {
         value.textContent = rate.toLocaleString("en-US", {
           maximumFractionDigits: 4
         });
-        successfulRates++;
+        available++;
       } else {
         value.textContent = "Unavailable";
       }
     });
 
     rateDate.textContent =
-      "Rate date: " + (data.time_last_update_utc || "not provided") +
-      ". Source: ExchangeRate-API. " +
-      successfulRates + " of " + currencies.length + " rates available.";
+      "Source: Currency API. " + available +
+      " of " + currencies.length + " rates available.";
   } catch (error) {
     cards.forEach(({ value }) => {
       value.textContent = "Unavailable";
     });
 
     rateDate.textContent =
-      "Rates could not load. Please check your internet connection and retry.";
+      "Rates could not load. Please check your connection and retry.";
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
-
     document.getElementById("rateDate").textContent = "Snapshot script started.";
 loadRateSnapshot();
   </script>
