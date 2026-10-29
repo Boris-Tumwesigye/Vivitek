@@ -1,4 +1,7 @@
-
+loadRateSnapshot().catch(error => {
+  document.getElementById("rateDate").textContent =
+    "Snapshot error: " + error.message;
+});
 
 <!DOCTYPE html>
 <html lang="en">
@@ -427,7 +430,10 @@ async function loadRateSnapshot() {
   }
 }
     document.getElementById("rateDate").textContent = "Snapshot script started.";
-loadRateSnapshot();
+loadRateSnapshot().catch(error => {
+  document.getElementById("rateDate").textContent =
+    "Snapshot error: " + error.message;
+});
   </script>
 </body>
 </html>
