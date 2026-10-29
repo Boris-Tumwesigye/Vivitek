@@ -389,7 +389,7 @@ async function loadRateSnapshot() {
     }
 
     const data = await response.json();
-    const rates = data.usd;
+    const rates = data.rates;
 
     if (!rates) {
       throw new Error("No exchange rates returned.");
