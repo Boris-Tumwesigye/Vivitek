@@ -356,7 +356,7 @@ async function loadRateSnapshot() {
   const currencies = ["EUR", "GBP", "UGX", "KES", "SSP"];
 
   rateList.replaceChildren();
-  rateDate.textContent = "Fetching available reference rates...";
+  rateDate.textContent = "Loading exchange rates...";
 
   const cards = currencies.map(currency => {
     const card = document.createElement("div");
@@ -374,41 +374,47 @@ async function loadRateSnapshot() {
     return { currency, value };
   });
 
-  const results = await Promise.allSettled(
-    cards.map(({ currency }) => getRate("USD", currency))
-  );
+  try {
+    const response = await fetch(
+      "https://open.er-api.com/v6/latest/USD"
+    );
 
-  let successfulRates = 0;
-  let latestDate = "";
-
-  results.forEach((result, index) => {
-    const currency = cards[index].currency;
-    const value = cards[index].value;
-
-    if (result.status === "fulfilled") {
-      value.textContent = result.value.rate.toLocaleString("en-US", {
-        maximumFractionDigits: 4
-      });
-
-      successfulRates++;
-
-      if (result.value.date > latestDate) {
-        latestDate = result.value.date;
-      }
-    } else {
-      value.textContent = "Unavailable";
+    if (!response.ok) {
+      throw new Error("Exchange-rate service unavailable.");
     }
-  });
 
-  if (successfulRates > 0) {
+    const data = await response.json();
+
+    if (data.result !== "success" || !data.rates) {
+      throw new Error("Exchange rates were not returned.");
+    }
+
+    let successfulRates = 0;
+
+    cards.forEach(({ currency, value }) => {
+      const rate = data.rates[currency];
+
+      if (typeof rate === "number") {
+        value.textContent = rate.toLocaleString("en-US", {
+          maximumFractionDigits: 4
+        });
+        successfulRates++;
+      } else {
+        value.textContent = "Unavailable";
+      }
+    });
+
     rateDate.textContent =
-      "Reference rate date: " + latestDate +
-      ". Source: Frankfurter API. " +
-      successfulRates + " of " + currencies.length +
-      " rates loaded.";
-  } else {
+      "Rate date: " + (data.time_last_update_utc || "not provided") +
+      ". Source: ExchangeRate-API. " +
+      successfulRates + " of " + currencies.length + " rates available.";
+  } catch (error) {
+    cards.forEach(({ value }) => {
+      value.textContent = "Unavailable";
+    });
+
     rateDate.textContent =
-      "Rates could not be loaded. Check your internet connection and try again.";
+      "Rates could not load. Please check your internet connection and retry.";
   }
 }
 
