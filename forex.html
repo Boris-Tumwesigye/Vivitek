@@ -378,11 +378,13 @@ async function loadRateSnapshot() {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 8000);
 
+  
   try {
     const response = await fetch(
-      https://api.exchangerate.fun/latest?base=USD
+      "https://api.exchangerate.fun/latest?base=USD",
       { signal: controller.signal }
     );
+
 
     if (!response.ok) {
       throw new Error("Exchange-rate request failed.");
