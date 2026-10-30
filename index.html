@@ -552,6 +552,87 @@ main .card p {
   }
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const latestArticles = document.querySelectorAll(
+    "#latest-articles article"
+  );
+  const notificationBell = document.getElementById("notificationBell");
+  const notificationPanel = document.getElementById("notificationPanel");
+  const closeNotificationPanel = document.getElementById("closeNotificationPanel");
+  const notificationCount = document.getElementById("notificationCount");
 
+  if (!notificationBell || !notificationPanel || !closeNotificationPanel || !notificationCount) {
+    return;
+  }
+
+  const articleLinks = [];
+
+  latestArticles.forEach(function (article) {
+    const link = article.querySelector('a[href$=".html"]');
+    const heading = article.querySelector("h3");
+
+    if (link && heading) {
+      articleLinks.push({
+        url: link.getAttribute("href"),
+        title: heading.textContent.trim()
+      });
+    }
+  });
+
+  const storageKey = "vivitekSeenArticles";
+  let seenArticles = JSON.parse(localStorage.getItem(storageKey) || "null");
+
+  if (!Array.isArray(seenArticles)) {
+    seenArticles = articleLinks.map(article => article.url);
+    localStorage.setItem(storageKey, JSON.stringify(seenArticles));
+  }
+
+  const newArticles = articleLinks.filter(function (article) {
+    return !seenArticles.includes(article.url);
+  });
+
+  notificationCount.textContent = newArticles.length;
+  notificationBell.setAttribute(
+    "aria-label",
+    "Recent article updates, " + newArticles.length + " new articles"
+  );
+
+  notificationPanel.innerHTML =
+    '<h3 style="margin-top:0;">Recent Updates</h3>';
+
+  if (newArticles.length === 0) {
+    notificationPanel.innerHTML += "<p>No new articles yet.</p>";
+  } else {
+    newArticles.forEach(function (article) {
+      const item = document.createElement("p");
+      const link = document.createElement("a");
+
+      link.href = article.url;
+      link.textContent = article.title;
+      item.appendChild(link);
+      notificationPanel.appendChild(item);
+    });
+  }
+
+  notificationPanel.appendChild(closeNotificationPanel);
+
+  notificationBell.addEventListener("click", function () {
+    notificationPanel.hidden = !notificationPanel.hidden;
+
+    if (!notificationPanel.hidden) {
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify(articleLinks.map(article => article.url))
+      );
+      notificationCount.textContent = "0";
+    }
+  });
+
+  closeNotificationPanel.addEventListener("click", function () {
+    notificationPanel.hidden = true;
+  });
+});
+</script>
 </body>
 </html>
