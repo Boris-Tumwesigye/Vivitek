@@ -566,17 +566,31 @@ main .card p {
   }
 </script>
 
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const latestArticles = document.querySelectorAll(
     "#latest-articles article"
   );
-  const notificationBell = document.getElementById("notificationBell");
-  const notificationPanel = document.getElementById("notificationPanel");
-  const closeNotificationPanel = document.getElementById("closeNotificationPanel");
-  const notificationCount = document.getElementById("notificationCount");
 
-  if (!notificationBell || !notificationPanel || !closeNotificationPanel || !notificationCount) {
+  const notificationBell =
+    document.getElementById("notificationBell");
+
+  const notificationPanel =
+    document.getElementById("notificationPanel");
+
+  const closeNotificationPanel =
+    document.getElementById("closeNotificationPanel");
+
+  const notificationCount =
+    document.getElementById("notificationCount");
+
+  if (
+    !notificationBell ||
+    !notificationPanel ||
+    !closeNotificationPanel ||
+    !notificationCount
+  ) {
     return;
   }
 
@@ -595,51 +609,90 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const storageKey = "vivitekSeenArticles";
-  let seenArticles = JSON.parse(localStorage.getItem(storageKey) || "null");
 
-  if (!Array.isArray(seenArticles)) {
-    seenArticles = articleLinks.map(article => article.url);
-    localStorage.setItem(storageKey, JSON.stringify(seenArticles));
+  let seenArticles = [];
+
+  try {
+    const savedArticles = localStorage.getItem(storageKey);
+    const parsedArticles = savedArticles
+      ? JSON.parse(savedArticles)
+      : null;
+
+    if (Array.isArray(parsedArticles)) {
+      seenArticles = parsedArticles;
+    } else {
+      // First visit: existing articles are not treated as new.
+      seenArticles = articleLinks.map(article => article.url);
+
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify(seenArticles)
+      );
+    }
+  } catch (error) {
+    console.warn("Vivitek notification storage unavailable:", error);
   }
 
-  const newArticles = articleLinks.filter(function (article) {
-    return !seenArticles.includes(article.url);
-  });
-
-  notificationCount.textContent = newArticles.length;
-  notificationBell.setAttribute(
-    "aria-label",
-    "Recent article updates, " + newArticles.length + " new articles"
-  );
-
-  notificationPanel.innerHTML =
-    '<h3 style="margin-top:0;">Recent Updates</h3>';
-
-  if (newArticles.length === 0) {
-    notificationPanel.innerHTML += "<p>No new articles yet.</p>";
-  } else {
-    newArticles.forEach(function (article) {
-      const item = document.createElement("p");
-      const link = document.createElement("a");
-
-      link.href = article.url;
-      link.textContent = article.title;
-      item.appendChild(link);
-      notificationPanel.appendChild(item);
+  function getNewArticles() {
+    return articleLinks.filter(function (article) {
+      return !seenArticles.includes(article.url);
     });
   }
 
-  notificationPanel.appendChild(closeNotificationPanel);
+  function updateNotifications() {
+    const newArticles = getNewArticles();
+
+    notificationCount.textContent = newArticles.length;
+
+    notificationBell.setAttribute(
+      "aria-label",
+      "Recent article updates, " +
+      newArticles.length +
+      " new articles"
+    );
+
+    notificationPanel.innerHTML =
+      '<h3 style="margin-top:0;">Recent Updates</h3>';
+
+    if (newArticles.length === 0) {
+      notificationPanel.innerHTML +=
+        "<p>No new articles yet.</p>";
+    } else {
+      newArticles.forEach(function (article) {
+        const item = document.createElement("p");
+        const link = document.createElement("a");
+
+        link.href = article.url;
+        link.textContent = article.title;
+
+        item.appendChild(link);
+        notificationPanel.appendChild(item);
+      });
+    }
+
+    notificationPanel.appendChild(closeNotificationPanel);
+  }
+
+  updateNotifications();
 
   notificationBell.addEventListener("click", function () {
     notificationPanel.hidden = !notificationPanel.hidden;
 
     if (!notificationPanel.hidden) {
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify(articleLinks.map(article => article.url))
+      seenArticles = articleLinks.map(
+        article => article.url
       );
-      notificationCount.textContent = "0";
+
+      try {
+        localStorage.setItem(
+          storageKey,
+          JSON.stringify(seenArticles)
+        );
+      } catch (error) {
+        console.warn("Could not save viewed articles:", error);
+      }
+
+      updateNotifications();
     }
   });
 
@@ -648,5 +701,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+
 </body>
 </html>
