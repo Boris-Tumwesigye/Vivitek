@@ -702,6 +702,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
 notificationBell.addEventListener("click", function () {
   notificationPanel.hidden = !notificationPanel.hidden;
+    notificationPanel.style.display =
+    notificationPanel.hidden ? "none" : "block";
 
   // Mark articles as seen only when closing the panel.
   if (notificationPanel.hidden) {
