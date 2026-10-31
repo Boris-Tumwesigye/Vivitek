@@ -699,15 +699,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   updateNotifications();
 
-  notificationBell.addEventListener("click", function () {
+  
+notificationBell.addEventListener("click", function () {
   notificationPanel.hidden = !notificationPanel.hidden;
-});
-  });
 
-  closeNotificationPanel.addEventListener("click", function () {
-    notificationPanel.hidden = true;
-  });
+  // Mark articles as seen only when closing the panel.
+  if (notificationPanel.hidden) {
+    seenArticles = articleLinks.map(function (article) {
+      return article.url;
+    });
+
+    try {
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify(seenArticles)
+      );
+    } catch (error) {
+      console.warn("Could not save viewed articles:", error);
+    }
+
+    updateNotifications();
+  }
 });
+
 </script>
 
 </body>
