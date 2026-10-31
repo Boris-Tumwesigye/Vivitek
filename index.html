@@ -700,11 +700,17 @@ document.addEventListener("DOMContentLoaded", function () {
   updateNotifications();
 
   
-notificationBell.addEventListener("click", function () {
-  notificationPanel.hidden = !notificationPanel.hidden;
 
-  // Mark articles as seen only when closing the panel.
+notificationBell.addEventListener("click", function () {
+
   if (notificationPanel.hidden) {
+    notificationPanel.hidden = false;
+    notificationPanel.style.display = "block";
+
+  } else {
+    notificationPanel.hidden = true;
+    notificationPanel.style.display = "none";
+
     seenArticles = articleLinks.map(function (article) {
       return article.url;
     });
@@ -720,8 +726,8 @@ notificationBell.addEventListener("click", function () {
 
     updateNotifications();
   }
-});
 
+});
 </script>
 
 </body>
