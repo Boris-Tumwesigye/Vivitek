@@ -615,6 +615,7 @@ document.addEventListener("DOMContentLoaded", function () {
     !closeNotificationPanel ||
     !notificationCount
   ) {
+    console.error("Vivitek notification elements are missing.");
     return;
   }
 
@@ -633,19 +634,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const storageKey = "vivitekSeenArticles";
-
   let seenArticles = [];
 
   try {
     const savedArticles = localStorage.getItem(storageKey);
-    const parsedArticles = savedArticles
-      ? JSON.parse(savedArticles)
-      : null;
 
-    if (Array.isArray(parsedArticles)) {
-      seenArticles = parsedArticles;
+    if (savedArticles !== null) {
+      const parsedArticles = JSON.parse(savedArticles);
+
+      if (Array.isArray(parsedArticles)) {
+        seenArticles = parsedArticles;
+      } else {
+        seenArticles = articleLinks.map(article => article.url);
+      }
     } else {
-      // First visit: existing articles are not treated as new.
+      // First visit: do not mark existing articles as new.
       seenArticles = articleLinks.map(article => article.url);
 
       localStorage.setItem(
@@ -654,17 +657,13 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
   } catch (error) {
-    console.warn("Vivitek notification storage unavailable:", error);
-  }
-
-  function getNewArticles() {
-    return articleLinks.filter(function (article) {
-      return !seenArticles.includes(article.url);
-    });
+    console.warn("Notification storage error:", error);
   }
 
   function updateNotifications() {
-    const newArticles = getNewArticles();
+    const newArticles = articleLinks.filter(function (article) {
+      return !seenArticles.includes(article.url);
+    });
 
     notificationCount.textContent = newArticles.length;
 
@@ -697,20 +696,7 @@ document.addEventListener("DOMContentLoaded", function () {
     notificationPanel.appendChild(closeNotificationPanel);
   }
 
-  updateNotifications();
-
-  
-
-notificationBell.addEventListener("click", function () {
-
-  if (notificationPanel.hidden) {
-    notificationPanel.hidden = false;
-    notificationPanel.style.display = "block";
-
-  } else {
-    notificationPanel.hidden = true;
-    notificationPanel.style.display = "none";
-
+  function markArticlesAsSeen() {
     seenArticles = articleLinks.map(function (article) {
       return article.url;
     });
@@ -727,6 +713,27 @@ notificationBell.addEventListener("click", function () {
     updateNotifications();
   }
 
+  function closePanel() {
+    notificationPanel.hidden = true;
+    notificationPanel.style.display = "none";
+    markArticlesAsSeen();
+  }
+
+  updateNotifications();
+
+  notificationBell.addEventListener("click", function () {
+    if (notificationPanel.hidden) {
+      updateNotifications();
+      notificationPanel.hidden = false;
+      notificationPanel.style.display = "block";
+    } else {
+      closePanel();
+    }
+  });
+
+  closeNotificationPanel.addEventListener("click", function () {
+    closePanel();
+  });
 });
 </script>
 
