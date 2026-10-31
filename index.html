@@ -700,24 +700,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateNotifications();
 
   notificationBell.addEventListener("click", function () {
-    notificationPanel.hidden = !notificationPanel.hidden;
-
-    if (!notificationPanel.hidden) {
-      seenArticles = articleLinks.map(
-        article => article.url
-      );
-
-      try {
-        localStorage.setItem(
-          storageKey,
-          JSON.stringify(seenArticles)
-        );
-      } catch (error) {
-        console.warn("Could not save viewed articles:", error);
-      }
-
-      updateNotifications();
-    }
+  notificationPanel.hidden = !notificationPanel.hidden;
+});
   });
 
   closeNotificationPanel.addEventListener("click", function () {
