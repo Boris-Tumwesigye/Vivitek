@@ -671,7 +671,25 @@ document.addEventListener("DOMContentLoaded", function () {
   } catch (error) {
     console.warn("Notification storage error:", error);
   }
+  // Announce the new LRA article once on each device.
+  const announcementKey = "vivitekAnnouncementLRA2026";
 
+  try {
+    if (!localStorage.getItem(announcementKey)) {
+      seenArticles = seenArticles.filter(function (url) {
+        return url !== "lra-northern-uganda.html";
+      });
+
+      localStorage.setItem(
+        storageKey,
+        JSON.stringify(seenArticles)
+      );
+
+      localStorage.setItem(announcementKey, "shown");
+    }
+  } catch (error) {
+    console.warn("Could not update LRA announcement:", error);
+  }
   function updateNotifications() {
     const newArticles = articleLinks.filter(function (article) {
       return !seenArticles.includes(article.url);
