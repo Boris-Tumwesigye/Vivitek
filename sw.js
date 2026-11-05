@@ -13,7 +13,7 @@ const FILES_TO_CACHE = [
   "/Vivitek/contact.html",
   "/Vivitek/advertise.html",
   "/Vivitek/SSudan-14-Dec-2018.jpg",
-"/Vivitek/typhoid.html"
+"/Vivitek/typhoid.html",
     "/Vivitek/display-settings.css",
   "/Vivitek/display-settings.js"
 ];
