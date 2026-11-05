@@ -849,6 +849,32 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+  <script>
+// Vivitek display preferences
+document.addEventListener("DOMContentLoaded", function () {
+  const darkToggle = document.getElementById("darkModeToggle");
+  const desktopToggle = document.getElementById("desktopModeToggle");
+
+  // Restore saved preferences
+  darkToggle.checked = localStorage.getItem("vivitekDarkMode") === "on";
+  desktopToggle.checked = localStorage.getItem("vivitekDesktopMode") === "on";
+
+  document.body.classList.toggle("dark-mode", darkToggle.checked);
+  document.body.classList.toggle("desktop-mode", desktopToggle.checked);
+
+  // Dark mode switch
+  darkToggle.addEventListener("change", function () {
+    document.body.classList.toggle("dark-mode", this.checked);
+    localStorage.setItem("vivitekDarkMode", this.checked ? "on" : "off");
+  });
+
+  // Desktop view switch
+  desktopToggle.addEventListener("change", function () {
+    document.body.classList.toggle("desktop-mode", this.checked);
+    localStorage.setItem("vivitekDesktopMode", this.checked ? "on" : "off");
+  });
+});
+  </script>
 
 </body>
 </html>
