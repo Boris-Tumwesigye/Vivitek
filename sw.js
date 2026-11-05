@@ -1,4 +1,4 @@
-const CACHE_NAME = "vivitek-cache-v4";
+const CACHE_NAME = "vivitek-cache-v5";
 
 const FILES_TO_CACHE = [
   "/Vivitek/",
@@ -14,6 +14,8 @@ const FILES_TO_CACHE = [
   "/Vivitek/advertise.html",
   "/Vivitek/SSudan-14-Dec-2018.jpg",
 "/Vivitek/typhoid.html"
+    "/Vivitek/display-settings.css",
+  "/Vivitek/display-settings.js"
 ];
 
 self.addEventListener("install", (event) => {
