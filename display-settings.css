@@ -1,1 +1,75 @@
+/* VIVITEK SHARED DISPLAY SETTINGS */
 
+/* Settings bar */
+.display-settings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 14px;
+  background: #eaf1f8;
+  color: #123b65;
+}
+
+.display-settings label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* DARK MODE */
+body.dark-mode {
+  background: #121820 !important;
+  color: #e6edf5 !important;
+}
+
+body.dark-mode main,
+body.dark-mode section,
+body.dark-mode article,
+body.dark-mode .card {
+  background-color: #1e2936;
+  color: #e6edf5;
+}
+
+body.dark-mode nav {
+  background: #1e2936;
+}
+
+body.dark-mode nav a,
+body.dark-mode a {
+  color: #8fc5ff;
+}
+
+body.dark-mode .hero {
+  background: #26384c;
+  color: #ffffff;
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+  background: #26384c;
+  color: #ffffff;
+  border-color: #60758c;
+}
+
+body.dark-mode .display-settings {
+  background: #1e2936;
+  color: #ffffff;
+}
+
+/* DESKTOP VIEW */
+body.desktop-mode {
+  min-width: 900px;
+}
+
+body.desktop-mode main {
+  max-width: 1200px;
+}
+
+body.desktop-mode .topics {
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+}
