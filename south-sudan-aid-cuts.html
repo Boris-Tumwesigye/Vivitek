@@ -295,5 +295,27 @@ Read independent South Sudanese coverage
 <p>Knowledge for Everyday Life</p>
 </footer>
 
+<script>
+function toggleTheme() {
+  document.body.classList.toggle("dark");
+
+  const isDark = document.body.classList.contains("dark");
+
+  document.getElementById("themeToggle").textContent =
+    isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+
+  localStorage.setItem("vivitekArticleTheme", isDark ? "dark" : "light");
+}
+
+(function () {
+  const savedTheme = localStorage.getItem("vivitekArticleTheme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("themeToggle").textContent = "☀️ Light Mode";
+  }
+})();
+</script>
+
 </body>
 </html>
