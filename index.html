@@ -885,6 +885,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const resultsPanel = document.getElementById("sports-results");
 
   if (!livePanel || !resultsPanel) return;
+  livePanel.querySelector("p").textContent =
+  "Sports script started. Connecting to live data...";
 
   function addText(parent, tag, text) {
     const element = document.createElement(tag);
