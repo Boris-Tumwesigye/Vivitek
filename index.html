@@ -877,6 +877,129 @@ document.addEventListener("DOMContentLoaded", function () {
 });
   </script>
   <script src="display-settings.js"></script>
+  <script>
+(function () {
+  const sports = ["football", "basketball", "cricket", "tennis"];
+
+  const livePanel = document.getElementById("sports-live-scores");
+  const resultsPanel = document.getElementById("sports-results");
+
+  if (!livePanel || !resultsPanel) return;
+
+  function addText(parent, tag, text) {
+    const element = document.createElement(tag);
+    element.textContent = text;
+    parent.appendChild(element);
+    return element;
+  }
+
+  function isFinished(match) {
+    const status = (
+      (match.status || "") + " " + (match.status_text || "")
+    ).toLowerCase();
+
+    return /finished|final|ended|full time/.test(status);
+  }
+
+  function isLive(match) {
+    const status = (
+      (match.status || "") + " " + (match.status_text || "")
+    ).toLowerCase();
+
+    return /live|in.play|in_play|1st|2nd|half|quarter|period|set|overtime/.test(status);
+  }
+
+  function displayMatches(panel, heading, matches, mode) {
+    panel.replaceChildren(heading);
+
+    const grouped = document.createElement("div");
+    panel.appendChild(grouped);
+
+    let displayed = 0;
+
+    sports.forEach(function (sport) {
+      const sportMatches = matches[sport] || [];
+      const selected = sportMatches.filter(function (match) {
+        return mode === "live" ? isLive(match) : isFinished(match);
+      });
+
+      if (!selected.length) return;
+
+      addText(grouped, "h4",
+        sport.charAt(0).toUpperCase() + sport.slice(1)
+      );
+
+      selected.slice(0, 8).forEach(function (match) {
+        const row = document.createElement("p");
+        const competition = match.competition
+          ? match.competition + " — "
+          : "";
+
+        const score =
+          (match.home_score ?? "-") + " : " +
+          (match.away_score ?? "-");
+
+        row.textContent =
+          competition +
+          (match.home || "Home") + " " + score + " " +
+          (match.away || "Away") +
+          (match.status_text ? " (" + match.status_text + ")" : "");
+
+        grouped.appendChild(row);
+        displayed++;
+      });
+    });
+
+    if (!displayed) {
+      addText(
+        grouped,
+        "p",
+        mode === "live"
+          ? "No live matches are currently listed."
+          : "No completed results are currently listed."
+      );
+    }
+
+    addText(
+      panel,
+      "small",
+      "Checked: " + new Date().toLocaleTimeString()
+    );
+  }
+
+  async function updateSports() {
+    const matches = {};
+
+    await Promise.all(sports.map(async function (sport) {
+      try {
+        const response = await fetch(
+          "https://sportscore.com/api/widget/matches/?sport=" +
+          sport + "&limit=20"
+        );
+
+        if (!response.ok) throw new Error("Request failed");
+
+        const data = await response.json();
+        matches[sport] = Array.isArray(data.matches)
+          ? data.matches
+          : [];
+      } catch (error) {
+        matches[sport] = [];
+        console.error("Sports feed error:", sport, error);
+      }
+    }));
+
+    const liveHeading = livePanel.querySelector("h3").cloneNode(true);
+    const resultsHeading = resultsPanel.querySelector("h3").cloneNode(true);
+
+    displayMatches(livePanel, liveHeading, matches, "live");
+    displayMatches(resultsPanel, resultsHeading, matches, "results");
+  }
+
+  updateSports();
+  setInterval(updateSports, 120000);
+})();
+  </script>
 
 </body>
 </html>
