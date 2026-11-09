@@ -970,7 +970,70 @@ document.addEventListener("DOMContentLoaded", function () {
       "Checked: " + new Date().toLocaleTimeString()
     );
   }
+  async function updateFixtures() {
+    const container = document.getElementById("sports-fixtures-data");
 
+    if (!container) return;
+
+    container.textContent = "Loading upcoming fixtures...";
+
+    const today = new Date().toISOString().slice(0, 10);
+    const output = document.createDocumentFragment();
+    let total = 0;
+
+    for (const sport of sports) {
+      try {
+        const url =
+          "https://sportscore.com/api/v1/fixtures/?sport=" +
+          sport + "&date=" + today + "&status=upcoming&limit=20";
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Request failed");
+
+        const data = await response.json();
+        const fixtures = Array.isArray(data)
+          ? data
+          : Array.isArray(data.fixtures)
+            ? data.fixtures
+            : Array.isArray(data.matches)
+              ? data.matches
+              : [];
+
+        if (!fixtures.length) continue;
+
+        const heading = document.createElement("h4");
+        heading.textContent =
+          sport.charAt(0).toUpperCase() + sport.slice(1);
+        output.appendChild(heading);
+
+        fixtures.slice(0, 8).forEach(function (match) {
+          const item = document.createElement("p");
+          item.textContent =
+            (match.competition || "") + " — " +
+            (match.home || match.home_team || "Home") +
+            " vs " +
+            (match.away || match.away_team || "Away") +
+            (match.time ? " (" + match.time + ")" : "");
+
+          output.appendChild(item);
+          total++;
+        });
+      } catch (error) {
+        console.error("Fixture feed error:", sport, error);
+      }
+    }
+
+    container.replaceChildren();
+
+    if (!total) {
+      const message = document.createElement("p");
+      message.textContent =
+        "No upcoming fixtures are available for today.";
+      container.appendChild(message);
+    } else {
+      container.appendChild(output);
+    }
+    }
   async function updateSports() {
     const matches = {};
 
