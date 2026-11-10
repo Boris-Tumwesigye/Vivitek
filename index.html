@@ -1058,8 +1058,13 @@ document.addEventListener("DOMContentLoaded", function () {
       container.replaceChildren();
 
       if (!teams.length) {
-        container.textContent = "No league standings are currently available.";
-        return;
+  container.textContent =
+    "Diagnostic: " + JSON.stringify({
+      keys: Object.keys(data),
+      teamsType: typeof data.teams,
+      teamsIsArray: Array.isArray(data.teams)
+    });
+  return;
       }
 
       const title = document.createElement("h4");
