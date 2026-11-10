@@ -1149,9 +1149,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   updateSports();
-    updateFixtures();
-  setInterval(updateSports, 120000);
-  setInterval(updateFixtures, 120000);
+updateFixtures();
+updateStandings();
+
+setInterval(updateSports, 120000);
+setInterval(updateFixtures, 120000);
+setInterval(updateStandings, 120000);
 })();
   </script>
 
