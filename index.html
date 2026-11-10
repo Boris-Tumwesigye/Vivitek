@@ -1053,11 +1053,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       const data = await response.json();
-      const teams = Array.isArray(data.tables) &&
-  data.tables.length &&
-  Array.isArray(data.tables[0].rows)
-  ? data.tables[0].rows
-  : [];
+      const teams = Array.isArray(data.teams) ? data.teams : [];
 
       container.replaceChildren();
 
