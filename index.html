@@ -3,17 +3,18 @@
 <html lang="en">
 <head>
   <link rel="icon" type="image/png" href="icon-192.png">
-  <meta name="google-site-verification" content="odGqqsc4QUJbwKjmOlmG7AyNWLKDJlFq25IqZiSfyOo" />
-<link rel="manifest" href="/Vivitek/manifest.json">
-<meta name="theme-color" content="#123b65">
-<meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="google-site-verification" content="odGqqsc4QUJbwKjmOlmG7AyNWLKDJlFq25IqZiSfyOo">
+  <link rel="manifest" href="/Vivitek/manifest.json">
+  <meta name="theme-color" content="#123b65">
+  <meta name="apple-mobile-web-app-capable" content="yes">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#123b65">
   <title>Vivitek - Health and Latest News</title>
+
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -21,14 +22,17 @@
       color: #172b4d;
       line-height: 1.6;
     }
+
     header {
       background: #123b65;
       color: white;
       text-align: center;
       padding: 28px 16px;
     }
+
     header h1 { margin: 0; font-size: 36px; }
     header p { margin: 5px 0 0; }
+
     nav {
       display: flex;
       justify-content: center;
@@ -37,24 +41,34 @@
       padding: 12px;
       background: white;
     }
+
     nav a {
       color: #123b65;
       text-decoration: none;
       font-weight: bold;
       padding: 8px;
     }
+
     .hero {
       background: #dcecff;
       text-align: center;
       padding: 35px 18px;
     }
+
     .hero h2 { margin-top: 0; }
-    main { max-width: 950px; margin: auto; padding: 20px; }
+
+    main {
+      max-width: 950px;
+      margin: auto;
+      padding: 20px;
+    }
+
     .topics {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
     }
+
     .card {
       background: white;
       padding: 22px;
@@ -62,247 +76,293 @@
       box-shadow: 0 3px 12px #172b4d12;
       margin-bottom: 16px;
     }
+
     .card h3 { color: #123b65; margin-top: 0; }
     .card a { color: #075bb5; font-weight: bold; }
+
     footer {
       background: #123b65;
       color: white;
       text-align: center;
+      padding: 24px 18px;
+    }
+
+    /* Vivitek professional design upgrade */
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #243247;
+      background: #f4f7fb;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #102a43;
+      color: #ffffff;
+    }
+
+    header h1 { letter-spacing: 1px; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+    }
+
+    nav a {
+      color: #123b65;
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    nav a:hover { background: #087e8b; }
+
+    .hero {
+      background: linear-gradient(135deg, #102a43, #087e8b);
+      color: #ffffff;
+      padding: 48px 20px;
+      text-align: center;
+    }
+
+    main {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      box-sizing: border-box;
       padding: 20px;
     }
-    
-/* Vivitek professional design upgrade */
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #243247;
-  background: #f4f7fb;
-  line-height: 1.7;
-}
 
-header {
-  background: #102a43;
-  color: #ffffff;
-}
+    main .card {
+      background: #ffffff;
+      border: 1px solid #e1e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(16, 42, 67, 0.07);
+      overflow-wrap: anywhere;
+    }
 
-header h1 {
-  letter-spacing: 1px;
-}
+    h2, h3 {
+      color: #102a43;
+      line-height: 1.3;
+    }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px;
-}
+    button, input, textarea {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
 
-nav a {
-  color: #123b65;
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 6px;
-}
+    input[type="search"] { border-radius: 10px; }
 
-nav a:hover {
-  background: #087e8b;
-}
+    /* Small-screen improvements */
+    @media (max-width: 600px) {
+      nav {
+        gap: 5px;
+        padding: 10px 5px;
+      }
 
-.hero {
-  background: linear-gradient(135deg, #102a43, #087e8b);
-  color: #ffffff;
-  padding: 48px 20px;
-  text-align: center;
-}
+      nav a {
+        padding: 8px;
+        font-size: 14px;
+      }
 
-main {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  padding: 20px;
-}
+      .hero { padding: 32px 16px; }
+      main { padding: 12px; }
 
-main .card {
-  background: #ffffff;
-  border: 1px solid #e1e8f0;
-  border-radius: 14px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 14px rgba(16, 42, 67, 0.07);
-  overflow-wrap: anywhere;
-}
+      main .card {
+        padding: 16px;
+        margin-bottom: 14px;
+      }
 
-h2, h3 {
-  color: #102a43;
-  line-height: 1.3;
-}
+      h1 { font-size: 28px; }
+      h2 { font-size: 22px; }
+      p { overflow-wrap: anywhere; }
+    }
 
-button, input, textarea {
-  max-width: 100%;
-  box-sizing: border-box;
-}
+    /* Vivitek homepage polish */
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
 
-input[type="search"] {
-  border-radius: 10px;
-}
+    main .card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin: 12px 0;
+    }
 
-/* Small-screen improvements */
-@media (max-width: 600px) {
-  nav {
-    gap: 5px;
-    padding: 10px 5px;
-  }
+    main .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      margin: 0 0 22px;
+      box-shadow: 0 5px 18px rgba(16, 42, 67, 0.08);
+    }
 
-  nav a {
-    padding: 8px;
-    font-size: 14px;
-  }
+    main .card h2,
+    main .card h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
 
-  .hero {
-    padding: 32px 16px;
-  }
+    main .card p {
+      color: #405166;
+      line-height: 1.75;
+    }
 
-  main {
-    padding: 12px;
-  }
+    @media (max-width: 600px) {
+      main .card {
+        padding: 15px;
+        margin-bottom: 16px;
+      }
 
-  main .card {
-    padding: 16px;
-    margin-bottom: 14px;
-  }
+      main .card img { height: 180px; }
+    }
 
-  h1 {
-    font-size: 28px;
-  }
+    /* Vivitek display settings */
+    .display-settings {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 14px;
+      background: #eaf1f8;
+      color: #123b65;
+    }
 
-  h2 {
-    font-size: 22px;
-  }
+    .display-settings label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-  p {
-    overflow-wrap: anywhere;
-  }
-}
+    /* Dark mode */
+    body.dark-mode {
+      background: #121820;
+      color: #e6edf5;
+    }
 
-/* Vivitek homepage polish */
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+    body.dark-mode nav,
+    body.dark-mode .card {
+      background: #1e2936;
+      color: #e6edf5;
+    }
 
-main .card img {
-  width: 100%;
-  height: 210px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin: 12px 0;
-}
+    body.dark-mode .hero {
+      background: #26384c;
+      color: #ffffff;
+    }
 
-main .card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 0 0 22px;
-  box-shadow: 0 5px 18px rgba(16, 42, 67, 0.08);
-}
+    body.dark-mode .card h3,
+    body.dark-mode nav a {
+      color: #8fc5ff;
+    }
 
-main .card h2,
-main .card h3 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  line-height: 1.35;
-}
+    body.dark-mode .display-settings {
+      background: #1e2936;
+      color: #ffffff;
+    }
 
-main .card p {
-  color: #405166;
-  line-height: 1.75;
-}
+    /* Desktop-style layout */
+    body.desktop-mode main { max-width: 1200px; }
 
-@media (max-width: 600px) {
-  main .card {
-    padding: 15px;
-    margin-bottom: 16px;
-  }
+    body.desktop-mode .topics {
+      grid-template-columns: repeat(3, minmax(220px, 1fr));
+    }
 
-  main .card img {
-    height: 180px;
-  }
-}
-/* Vivitek display settings */
-.display-settings {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 14px;
-  background: #eaf1f8;
-  color: #123b65;
-}
+    body.desktop-mode { min-width: 900px; }
 
-.display-settings label {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  font-weight: bold;
-  cursor: pointer;
-}
+    /* Footer information and links */
+    .footer-content {
+      max-width: 950px;
+      margin: 0 auto;
+    }
 
-/* Dark mode */
-body.dark-mode {
-  background: #121820;
-  color: #e6edf5;
-}
+    .footer-consultation {
+      background: #f0f8ff;
+      color: #172b4d;
+      padding: 22px 18px;
+      margin: 10px 0 24px;
+      border-radius: 12px;
+      text-align: left;
+    }
 
-body.dark-mode nav,
-body.dark-mode .card {
-  background: #1e2936;
-  color: #e6edf5;
-}
+    .footer-consultation h2,
+    .footer-consultation h3 {
+      color: #102a43;
+    }
 
-body.dark-mode .hero {
-  background: #26384c;
-  color: #ffffff;
-}
+    .footer-consultation p {
+      color: #405166;
+    }
 
-body.dark-mode .card h3,
-body.dark-mode nav a {
-  color: #8fc5ff;
-}
+    .footer-consultation a {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #0077b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+    }
 
-body.dark-mode .display-settings {
-  background: #1e2936;
-  color: #ffffff;
-}
+    .footer-about {
+      margin: 20px 0;
+    }
 
-/* Desktop-style layout */
-body.desktop-mode main {
-  max-width: 1200px;
-}
+    .footer-about h2 { color: white; }
 
-body.desktop-mode .topics {
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
-}
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 20px 0;
+    }
 
-body.desktop-mode {
-  min-width: 900px;
-}
+    .footer-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+
+    body.dark-mode .footer-consultation {
+      background: #1e2936;
+      color: #e6edf5;
+    }
+
+    body.dark-mode .footer-consultation h2,
+    body.dark-mode .footer-consultation h3,
+    body.dark-mode .footer-consultation p {
+      color: #e6edf5;
+    }
   </style>
-  
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Vivitek",
-  "alternateName": "Vivitek - Health and Latest News",
-  "url": "https://boris-tumwesigye.github.io/Vivitek/"
-}
-</script>
-  <link rel="stylesheet" href="display-settings.css">
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Vivitek",
+    "alternateName": "Vivitek - Health and Latest News",
+    "url": "https://boris-tumwesigye.github.io/Vivitek/"
+  }
+  </script>
+
+  <link rel="stylesheet" href="display-settings.css">
 </head>
+
 <body>
   <header>
     <h1>Vivitek</h1>
@@ -315,55 +375,53 @@ body.desktop-mode {
     <a href="#news">News</a>
     <a href="#technology">Technology</a>
     <a href="weather.html">Weather</a>
-    
-<a href="contact.html">Contact Us</a>
-    
-<a href="#consultation">Free Consultation</a>
-
     <a href="advertise.html">Advertise With Us</a>
-
-    <a href="#about">About</a>
   </nav>
+
   <div class="display-settings">
-  <label>
-    <input type="checkbox" id="darkModeToggle">
-    Dark Mode
-  </label>
+    <label>
+      <input type="checkbox" id="darkModeToggle">
+      Dark Mode
+    </label>
 
-  <label>
-    <input type="checkbox" id="desktopModeToggle">
-    Desktop View
-  </label>
+    <label>
+      <input type="checkbox" id="desktopModeToggle">
+      Desktop View
+    </label>
   </div>
-  
-  <div style="text-align:right; padding:8px 18px;">
-  <button id="notificationBell" type="button" aria-label="Recent article updates, 4 articles available" style="font-size:22px; background:white; border:1px solid #ddd; border-radius:8px; padding:6px 12px; cursor:pointer;">
-    <span style="position:relative; display:inline-block;">
-  🔔
-  <span id="notificationCount" style="position:absolute; top:-8px; right:-12px; background:#d92d20; color:white; font-size:11px; line-height:18px; width:18px; height:18px; border-radius:50%; text-align:center; font-weight:bold;">0</span>
-</span>
-  </button>
-</div>
-  <div id="notificationPanel" hidden 
-     style="margin:0 18px 12px auto; max-width:320px; padding:14px; border:1px solid #ddd; border-radius:10px; background:white; box-shadow:0 2px 8px #0001;">
-  <h3 style="margin-top:0;">Recent Updates</h3>
-  <p><a href="malaria.html">Malaria: symptoms and prevention</a></p>
-  <p><a href="typhoid.html">Understanding typhoid fever</a></p>
-  <p><a href="ebola.html">Ebola: facts and prevention</a></p>
-  <p><a href="uk-health-aid.html">UK health aid update</a></p>
-    <p><a href="man-utd-vs-bournemouth.html">Manchester United 0–3 Bournemouth: Match Report</a> <strong>NEW</strong></p>
-  <button id="closeNotificationPanel" type="button">Close</button>
-</div>
 
-  <div style="padding: 18px; background: white; text-align: center;">
+  <div style="text-align:right; padding:8px 18px;">
+    <button id="notificationBell" type="button"
+      aria-label="Recent article updates, 4 articles available"
+      style="font-size:22px; background:white; border:1px solid #ddd; border-radius:8px; padding:6px 12px; cursor:pointer;">
+      <span style="position:relative; display:inline-block;">
+        🔔
+        <span id="notificationCount"
+          style="position:absolute; top:-8px; right:-12px; background:#d92d20; color:white; font-size:11px; line-height:18px; width:18px; height:18px; border-radius:50%; text-align:center; font-weight:bold;">0</span>
+      </span>
+    </button>
+  </div>
+
+  <div id="notificationPanel" hidden
+    style="margin:0 18px 12px auto; max-width:320px; padding:14px; border:1px solid #ddd; border-radius:10px; background:white; box-shadow:0 2px 8px #0001;">
+    <h3 style="margin-top:0;">Recent Updates</h3>
+    <p><a href="malaria.html">Malaria: symptoms and prevention</a></p>
+    <p><a href="typhoid.html">Understanding typhoid fever</a></p>
+    <p><a href="ebola.html">Ebola: facts and prevention</a></p>
+    <p><a href="uk-health-aid.html">UK health aid update</a></p>
+    <p><a href="man-utd-vs-bournemouth.html">Manchester United 0–3 Bournemouth: Match Report</a> <strong>NEW</strong></p>
+    <button id="closeNotificationPanel" type="button">Close</button>
+  </div>
+
+  <div style="padding:18px; background:white; text-align:center;">
     <input
       type="search"
       id="searchInput"
       placeholder="Search Health, News, Technology..."
       aria-label="Search Vivitek content"
-      style="width: 100%; max-width: 600px; padding: 14px; border: 1px solid #b8c7d9; border-radius: 10px; font-size: 16px;"
+      style="width:100%; max-width:600px; padding:14px; border:1px solid #b8c7d9; border-radius:10px; font-size:16px;"
     >
-    <p id="searchMessage" aria-live="polite" style="margin: 8px 0 0;"></p>
+    <p id="searchMessage" aria-live="polite" style="margin:8px 0 0;"></p>
   </div>
 
   <div class="hero" id="home">
@@ -371,797 +429,454 @@ body.desktop-mode {
     <p>Your place for health information, news and technology.</p>
   </div>
 
-  
-<main>
+  <main>
 
-  <section id="consultation" style="padding:24px 16px; margin:20px 0; background:#f0f8ff; border-radius:12px;">
-    <h2>Free Consultation</h2>
-    <p>Vivitek welcomes free enquiries about health education and technology.</p>
-    <h3>Health Consultation</h3>
-    <p>Request general health information and educational guidance. This service does not replace professional medical care or emergency treatment.</p>
-    <h3>Technology Consultation</h3>
-    <p>Get guidance on websites, digital projects, online tools and technology platforms.</p>
-    <a href="contact.html" style="display:inline-block; padding:12px 18px; background:#0077b6; color:white; text-decoration:none; border-radius:6px;">Request a Free Consultation</a>
-  </section>
+    <section>
+      <h2>Explore Our Topics</h2>
+      <div class="topics">
+        <article class="card" id="health">
+          <h3>❤️ Health</h3>
+          <p>Explore wellness, disease prevention and practical health information.</p>
+          <a href="#health-articles">Explore Health</a>
+        </article>
 
-  <section>
-    <h2>Explore Our Topics</h2>
-    <div class="topics">
-      <article class="card" id="health">
-        <h3>❤️ Health</h3>
-        <p>Explore wellness, disease prevention and practical health information.</p>
-        <a href="#health-articles">Explore Health</a>
-      </article>
-      <article class="card" id="news">
-        <h3>📰 News</h3>
-        <p>Discover stories, current affairs and community updates.</p>
-        <a href="#news-articles">Explore News</a>
-      </article>
-      <article class="card" id="technology">
-        <h3>💻 Technology</h3>
-        <p>Learn about AI, smartphones, apps and digital innovation.</p>
-        <a href="#technology-articles">Explore Technology</a>
-      </article>
-    </div>
-  </section>
+        <article class="card" id="news">
+          <h3>📰 News</h3>
+          <p>Discover stories, current affairs and community updates.</p>
+          <a href="#news-articles">Explore News</a>
+        </article>
 
-  <!-- HEALTH ARTICLES -->
-  <section id="health-articles">
-    <h2>❤️ Health Articles</h2>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=900&auto=format&fit=crop&q=80" alt="Healthy living and healthcare" loading="lazy">
-      <h3>5 Simple Ways to Stay Healthy Every Day</h3>
-      <p>Discover everyday habits that can support your health and wellbeing.</p>
-      <a href="health-article.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&auto=format&fit=crop&q=80"
-     alt="A variety of healthy foods and fresh vegetables"
-     loading="lazy">
-      <h3>Understanding Blood Pressure: History, Measurement and Its Importance</h3>
-      <p>Discover how blood pressure is measured, causes of hypertension and ways to protect your heart.</p>
-      <a href="blood-pressure.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&auto=format&fit=crop&q=80"
-     alt="Healthcare professional conducting a medical blood test"
-     loading="lazy">
-      <h3>Syphilis: Causes, Symptoms, Diagnosis and Treatment</h3>
-      <p>Learn about transmission, symptoms, laboratory diagnosis, treatment and prevention of syphilis.</p>
-      <a href="syphilis.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="uganda-health-review.jpg" alt="Uganda health sector performance review" loading="lazy">
-      <h3>Uganda Reports Progress Against Malaria and HIV, but Healthcare Financing Remains a Challenge</h3>
-      <p>Uganda's 2025/26 health performance report highlights progress against malaria, HIV and tuberculosis, alongside continuing funding and staffing challenges.</p>
-      <a href="uganda-health-performance.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="image-19.png" alt="Launch of South Sudan's National Cancer Registry in Juba" loading="lazy">
-      <h3>South Sudan Launches First National Cancer Registry in Juba</h3>
-      <p>South Sudan has launched its first National Population-Based Cancer Registry at Juba Teaching Hospital to improve cancer data collection and health planning.</p>
-      <a href="south-sudan-cancer-registry.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://wwwn.cdc.gov/phil/PHIL_Images/7950/7950_lores.jpg"
-     alt="Anopheles mosquito feeding on human skin"
-     loading="lazy">
-      <p>Photo: James Gathany, CDC/PHIL.</p>
-      <h3>Malaria: Symptoms, Prevention and When to Seek Treatment</h3>
-      <p>Learn about malaria symptoms, mosquito-bite prevention, treatment and warning signs.</p>
-      <a href="malaria.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1669139470813-827cbcf54b20?w=900&auto=format&fit=crop&q=80"
-     alt="A glass being filled with clean drinking water from a tap"
-     loading="lazy">
-      <h3>Typhoid Fever: Symptoms, Prevention and Treatment</h3>
-      <p>Learn about typhoid symptoms, diagnosis, treatment and how to prevent infection.</p>
-      <a href="typhoid.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=900&auto=format&fit=crop&q=80" alt="Public health and infectious disease prevention" loading="lazy">
-      <h3>Ebola Disease: Symptoms, Transmission and Prevention</h3>
-      <p>Learn how Ebola spreads, recognize possible symptoms and understand prevention and urgent medical guidance.</p>
-      <a href="ebola.html">Read Full Article →</a>
-    </article>
-  </section>
-
-  <!-- NEWS ARTICLES -->
-  <section id="news-articles">
-    <h2>📰 Latest News</h2>
-    <article class="card homepage-article">
-  <a href="kcca-rescues-114-children.html">
-    <img src="Images/kcca-children-rescue.jpg"
-         alt="Children rescued from Kampala streets"
-         loading="lazy">
-    <h3>KCCA Rescues 114 Children from Kampala Streets</h3>
-  </a>
-  <p>KCCA reports rescuing 114 children as authorities work to trace their families and establish their origins.</p>
-    </article>
-    <article class="card homepage-article">
-  <img src="Images/updf-soldiers-in-mogadishu.jpg"
-       alt="Ugandan UPDF soldiers serving in Somalia"
-       loading="lazy">
-  <h3>UPDF Begins Somalia Withdrawal as Uganda Sets 2027 Exit Deadline</h3>
-  <p>Uganda has begun withdrawing some troops from Somalia under a bilateral arrangement, while the country plans to complete the withdrawal of its remaining forces by the end of 2027.</p>
-  <a href="uganda-somalia-withdrawal.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="Images/new-karuma-bridge-design.jpeg"
-     alt="Architectural design of the new Karuma Bridge in Uganda"
-     loading="lazy">
-      <h3>Uganda Begins Construction of New Karuma Bridge</h3>
-      <p>A major infrastructure development expected to strengthen transport links between Uganda and South Sudan.</p>
-      <a href="karuma-bridge.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="Images/kamuntu-parliament-session.jpeg"
-     alt="Minister Ephraim Kamuntu inside the Parliament of Uganda chamber"
-     loading="lazy">
-      <h3>Uganda Minister Assures Parliament on Lawful Detention</h3>
-      <p>Internal Affairs Minister Ephraim Kamuntu tells Parliament suspects should be held in gazetted detention facilities and processed according to the law.</p>
-      <a href="uganda-gazetted-detention.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="Images/bentui-humanitarian-aid.jpg.webp"
-     alt="Humanitarian assistance for displaced people in Bentiu, South Sudan"
-     loading="lazy">
-      <h3>South Sudan: Aid Cuts Put 150,000 Displaced People at Risk of Disease</h3>
-      <p>MSF warns that funding reductions threaten healthcare, clean water and sanitation services in Bentiu and Malakal.</p>
-      <a href="south-sudan-aid-cuts.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&auto=format&fit=crop&q=80" alt="Agriculture and food production" loading="lazy">
-      <h3>Uganda Introduces Three New Purple-Fleshed Sweet Potato Varieties</h3>
-      <p>Uganda has unveiled improved sweet potato varieties intended to support nutrition, food security and farming communities.</p>
-      <a href="news-article.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&auto=format&fit=crop&q=80" alt="Healthcare services and medical support" loading="lazy">
-      <h3>UK Announces £10.7 Million Health Funding for South Sudan</h3>
-      <p>Read the report on UK support for South Sudan's health sector.</p>
-      <a href="uk-health-aid.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="Images/libya-2011-revolution.jpg"
-     alt="Anti-Gaddafi demonstrators during the 2011 Libyan revolution"
-     loading="lazy">
-      <p>Photo: Wikimedia Commons, CC BY-SA 3.0.</p>
-      <h3>The 2011 Libyan Revolution: How Demonstrations Toppled Gaddafi</h3>
-      <p>Discover the causes of the 2011 uprising, the fall of Muammar Gaddafi and Libya's political situation.</p>
-      <a href="libya-gaddafi-revolution.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="man-utd-fans.png" alt="Football fans" loading="lazy">
-      <h3>Manchester United 0–3 Bournemouth: A Difficult Day at Old Trafford</h3>
-      <p>Manchester United suffered a 3–0 defeat against Bournemouth. Read the match report, key moments and analysis.</p>
-      <a href="man-utd-vs-bournemouth.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="SSudan-14-Dec-2018.jpg" alt="Historical photograph from South Sudan's peace process" loading="lazy">
-      <h3>South Sudan Elections 2026: A Young Nation Faces a Defining Moment</h3>
-      <p>Explore South Sudan's history, its peace process and the challenges surrounding the planned 2026 elections.</p>
-      <a href="south-sudan-elections-2026.html">Read Full Article →</a>
-    </article>
-
-    <article class="card homepage-article">
-      <img src="Images/joseph-kony-2006.jpg"
-     alt="Joseph Kony during the 2006 peace negotiations"
-     loading="lazy">
-      <p>Photo: U.S. Department of State, via Wikimedia Commons (Public Domain).</p>
-      <h3>The LRA in Northern Uganda: What Happened, and Where Are They Now?</h3>
-      <p>Discover the history of Joseph Kony's Lord's Resistance Army, the suffering in northern Uganda and the movement's later history.</p>
-      <a href="lra-northern-uganda.html">Read Full Article →</a>
-    </article>
-  </section>
-
-  <!-- WORLD SPORTS LIVE -->
-  <section id="world-sports-live" class="sports-section">
-    <h2>🌍 WORLD SPORTS LIVE</h2>
-    <p>Follow sporting action from around the world.</p>
-
-    <div class="sports-intro">
-      <h3>🏆 Worldwide Sports Coverage</h3>
-      <p>
-        Football, basketball, cricket, tennis, rugby, volleyball,
-        baseball, ice hockey, American football, motorsports,
-        athletics, combat sports and esports.
-      </p>
-    </div>
-
-    <div class="sports-panel" id="sports-live-scores">
-      <h3>🔴 Live Now</h3>
-      <p>Live scores will appear here when the sports data feed is connected.</p>
-    </div>
-
-    <div class="sports-panel" id="sports-fixtures">
-      <h3>📅 Upcoming Fixtures</h3>
-      <div id="sports-fixtures-data">
-  <p>Loading upcoming fixtures...</p>
+        <article class="card" id="technology">
+          <h3>💻 Technology</h3>
+          <p>Learn about AI, smartphones, apps and digital innovation.</p>
+          <a href="#technology-articles">Explore Technology</a>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div class="sports-panel" id="sports-results">
-      <h3>📊 Latest Results</h3>
-      <p>Completed match results will appear here.</p>
-    </div>
+    <!-- HEALTH ARTICLES -->
+    <section id="health-articles">
+      <h2>❤️ Health Articles</h2>
 
-    <div class="sports-panel" id="sports-standings">
-      <h3>🥇 League and Tournament Standings</h3>
-      <div id="sports-standings-data">
-  <p>Loading league standings...</p>
-      </div>
-    </div>
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=900&auto=format&fit=crop&q=80" alt="Healthy living and healthcare" loading="lazy">
+        <h3>5 Simple Ways to Stay Healthy Every Day</h3>
+        <p>Discover everyday habits that can support your health and wellbeing.</p>
+        <a href="health-article.html">Read Full Article →</a>
+      </article>
 
-    <p class="sports-attribution">
-  <a href="https://sportscore.com/"
-     rel="dofollow"
-     title="Sports data by SportScore">
-    Powered by SportScore
-  </a>
-    </p>
-  </section>
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&auto=format&fit=crop&q=80"
+          alt="A variety of healthy foods and fresh vegetables" loading="lazy">
+        <h3>Understanding Blood Pressure: History, Measurement and Its Importance</h3>
+        <p>Discover how blood pressure is measured, causes of hypertension and ways to protect your heart.</p>
+        <a href="blood-pressure.html">Read Full Article →</a>
+      </article>
 
-  <style>
-    .sports-section {
-      margin: 30px auto;
-      padding: 20px;
-      max-width: 1100px;
-    }
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&auto=format&fit=crop&q=80"
+          alt="Healthcare professional conducting a medical blood test" loading="lazy">
+        <h3>Syphilis: Causes, Symptoms, Diagnosis and Treatment</h3>
+        <p>Learn about transmission, symptoms, laboratory diagnosis, treatment and prevention of syphilis.</p>
+        <a href="syphilis.html">Read Full Article →</a>
+      </article>
 
-    .sports-section h2 {
-      color: #123b65;
-    }
+      <article class="card homepage-article">
+        <img src="uganda-health-review.jpg" alt="Uganda health sector performance review" loading="lazy">
+        <h3>Uganda Reports Progress Against Malaria and HIV, but Healthcare Financing Remains a Challenge</h3>
+        <p>Uganda's 2025/26 health performance report highlights progress against malaria, HIV and tuberculosis, alongside continuing funding and staffing challenges.</p>
+        <a href="uganda-health-performance.html">Read Full Article →</a>
+      </article>
 
-    .sports-intro,
-    .sports-panel {
-      background: #f1f5f9;
-      padding: 18px;
-      margin: 15px 0;
-      border-radius: 10px;
-    }
+      <article class="card homepage-article">
+        <img src="image-19.png" alt="Launch of South Sudan's National Cancer Registry in Juba" loading="lazy">
+        <h3>South Sudan Launches First National Cancer Registry in Juba</h3>
+        <p>South Sudan has launched its first National Population-Based Cancer Registry at Juba Teaching Hospital to improve cancer data collection and health planning.</p>
+        <a href="south-sudan-cancer-registry.html">Read Full Article →</a>
+      </article>
 
-    .sports-panel h3 {
-      color: #123b65;
-      margin-top: 0;
-    }
+      <article class="card homepage-article">
+        <img src="https://wwwn.cdc.gov/phil/PHIL_Images/7950/7950_lores.jpg"
+          alt="Anopheles mosquito feeding on human skin" loading="lazy">
+        <p>Photo: James Gathany, CDC/PHIL.</p>
+        <h3>Malaria: Symptoms, Prevention and When to Seek Treatment</h3>
+        <p>Learn about malaria symptoms, mosquito-bite prevention, treatment and warning signs.</p>
+        <a href="malaria.html">Read Full Article →</a>
+      </article>
 
-    .sports-attribution {
-      font-size: 13px;
-      color: #666;
-    }
-  </style>
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1669139470813-827cbcf54b20?w=900&auto=format&fit=crop&q=80"
+          alt="A glass being filled with clean drinking water from a tap" loading="lazy">
+        <h3>Typhoid Fever: Symptoms, Prevention and Treatment</h3>
+        <p>Learn about typhoid symptoms, diagnosis, treatment and how to prevent infection.</p>
+        <a href="typhoid.html">Read Full Article →</a>
+      </article>
 
-  <!-- TECHNOLOGY ARTICLES -->
-  <section id="technology-articles">
-    <h2>💻 Technology Articles</h2>
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=900&auto=format&fit=crop&q=80"
+          alt="Public health and infectious disease prevention" loading="lazy">
+        <h3>Ebola Disease: Symptoms, Transmission and Prevention</h3>
+        <p>Learn how Ebola spreads, recognize possible symptoms and understand prevention and urgent medical guidance.</p>
+        <a href="ebola.html">Read Full Article →</a>
+      </article>
+    </section>
 
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=80" alt="People working with digital technology" loading="lazy">
-      <h3>African Union Ministers Call for Faster Digital Transformation Across Africa</h3>
-      <p>African leaders call for stronger digital investment, improved infrastructure and regional technology cooperation.</p>
-      <a href="african-digital-transformation.html">Read Full Article →</a>
-    </article>
+    <!-- NEWS ARTICLES -->
+    <section id="news-articles">
+      <h2>📰 Latest News</h2>
 
-    <article class="card homepage-article">
-      <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80" alt="Artificial intelligence technology" loading="lazy">
-      <h3>Artificial Intelligence in Healthcare: How Technology Is Changing Medical Diagnosis and Patient Care</h3>
-      <p>Explore how AI is transforming medical diagnosis, laboratory testing and healthcare delivery, including opportunities and challenges for Africa.</p>
-      <a href="ai-in-healthcare.html">Read Full Article →</a>
-    </article>
-  </section>
+      <article class="card homepage-article">
+        <a href="kcca-rescues-114-children.html">
+          <img src="Images/kcca-children-rescue.jpg"
+            alt="Children rescued from Kampala streets" loading="lazy">
+          <h3>KCCA Rescues 114 Children from Kampala Streets</h3>
+        </a>
+        <p>KCCA reports rescuing 114 children as authorities work to trace their families and establish their origins.</p>
+      </article>
 
-  <section id="about" class="card">
-    <h2>About Vivitek</h2>
-    <p>Vivitek shares useful knowledge about health, news and technology.</p>
-    <p>Our mission is to make helpful information easier to discover.</p>
-  </section>
+      <article class="card homepage-article">
+        <img src="Images/updf-soldiers-in-mogadishu.jpg"
+          alt="Ugandan UPDF soldiers serving in Somalia" loading="lazy">
+        <h3>UPDF Begins Somalia Withdrawal as Uganda Sets 2027 Exit Deadline</h3>
+        <p>Uganda has begun withdrawing some troops from Somalia under a bilateral arrangement, while the country plans to complete the withdrawal of its remaining forces by the end of 2027.</p>
+        <a href="uganda-somalia-withdrawal.html">Read Full Article →</a>
+      </article>
 
-</main>
+      <article class="card homepage-article">
+        <img src="Images/new-karuma-bridge-design.jpeg"
+          alt="Architectural design of the new Karuma Bridge in Uganda" loading="lazy">
+        <h3>Uganda Begins Construction of New Karuma Bridge</h3>
+        <p>A major infrastructure development expected to strengthen transport links between Uganda and South Sudan.</p>
+        <a href="karuma-bridge.html">Read Full Article →</a>
+      </article>
 
+      <article class="card homepage-article">
+        <img src="Images/kamuntu-parliament-session.jpeg"
+          alt="Minister Ephraim Kamuntu inside the Parliament of Uganda chamber" loading="lazy">
+        <h3>Uganda Minister Assures Parliament on Lawful Detention</h3>
+        <p>Internal Affairs Minister Ephraim Kamuntu tells Parliament suspects should be held in gazetted detention facilities and processed according to the law.</p>
+        <a href="uganda-gazetted-detention.html">Read Full Article →</a>
+      </article>
 
+      <article class="card homepage-article">
+        <img src="Images/bentui-humanitarian-aid.jpg.webp"
+          alt="Humanitarian assistance for displaced people in Bentiu, South Sudan" loading="lazy">
+        <h3>South Sudan: Aid Cuts Put 150,000 Displaced People at Risk of Disease</h3>
+        <p>MSF warns that funding reductions threaten healthcare, clean water and sanitation services in Bentiu and Malakal.</p>
+        <a href="south-sudan-aid-cuts.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900&auto=format&fit=crop&q=80"
+          alt="Agriculture and food production" loading="lazy">
+        <h3>Uganda Introduces Three New Purple-Fleshed Sweet Potato Varieties</h3>
+        <p>Uganda has unveiled improved sweet potato varieties intended to support nutrition, food security and farming communities.</p>
+        <a href="news-article.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900&auto=format&fit=crop&q=80"
+          alt="Healthcare services and medical support" loading="lazy">
+        <h3>UK Announces £10.7 Million Health Funding for South Sudan</h3>
+        <p>Read the report on UK support for South Sudan's health sector.</p>
+        <a href="uk-health-aid.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="Images/libya-2011-revolution.jpg"
+          alt="Anti-Gaddafi demonstrators during the 2011 Libyan revolution" loading="lazy">
+        <p>Photo: Wikimedia Commons, CC BY-SA 3.0.</p>
+        <h3>The 2011 Libyan Revolution: How Demonstrations Toppled Gaddafi</h3>
+        <p>Discover the causes of the 2011 uprising, the fall of Muammar Gaddafi and Libya's political situation.</p>
+        <a href="libya-gaddafi-revolution.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="man-utd-fans.png" alt="Football fans" loading="lazy">
+        <h3>Manchester United 0–3 Bournemouth: A Difficult Day at Old Trafford</h3>
+        <p>Manchester United suffered a 3–0 defeat against Bournemouth. Read the match report, key moments and analysis.</p>
+        <a href="man-utd-vs-bournemouth.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="SSudan-14-Dec-2018.jpg"
+          alt="Historical photograph from South Sudan's peace process" loading="lazy">
+        <h3>South Sudan Elections 2026: A Young Nation Faces a Defining Moment</h3>
+        <p>Explore South Sudan's history, its peace process and the challenges surrounding the planned 2026 elections.</p>
+        <a href="south-sudan-elections-2026.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="Images/joseph-kony-2006.jpg"
+          alt="Joseph Kony during the 2006 peace negotiations" loading="lazy">
+        <p>Photo: U.S. Department of State, via Wikimedia Commons (Public Domain).</p>
+        <h3>The LRA in Northern Uganda: What Happened, and Where Are They Now?</h3>
+        <p>Discover the history of Joseph Kony's Lord's Resistance Army, the suffering in northern Uganda and the movement's later history.</p>
+        <a href="lra-northern-uganda.html">Read Full Article →</a>
+      </article>
+    </section>
+
+    <!-- TECHNOLOGY ARTICLES -->
+    <section id="technology-articles">
+      <h2>💻 Technology Articles</h2>
+
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=900&auto=format&fit=crop&q=80"
+          alt="People working with digital technology" loading="lazy">
+        <h3>African Union Ministers Call for Faster Digital Transformation Across Africa</h3>
+        <p>African leaders call for stronger digital investment, improved infrastructure and regional technology cooperation.</p>
+        <a href="african-digital-transformation.html">Read Full Article →</a>
+      </article>
+
+      <article class="card homepage-article">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=900&auto=format&fit=crop&q=80"
+          alt="Artificial intelligence technology" loading="lazy">
+        <h3>Artificial Intelligence in Healthcare: How Technology Is Changing Medical Diagnosis and Patient Care</h3>
+        <p>Explore how AI is transforming medical diagnosis, laboratory testing and healthcare delivery, including opportunities and challenges for Africa.</p>
+        <a href="ai-in-healthcare.html">Read Full Article →</a>
+      </article>
+    </section>
+
+  </main>
+
+  <!-- FOOTER: ABOUT, CONSULTATION AND CONTACT -->
   <footer>
-    <p>© 2026 Vivitek. All rights reserved.</p>
-    <p>Knowledge for Everyday Life</p>
+    <div class="footer-content">
+
+      <section id="consultation" class="footer-consultation">
+        <h2>Free Consultation</h2>
+        <p>Vivitek welcomes free enquiries about health education and technology.</p>
+
+        <h3>Health Consultation</h3>
+        <p>Request general health information and educational guidance. This service does not replace professional medical care or emergency treatment.</p>
+
+        <h3>Technology Consultation</h3>
+        <p>Get guidance on websites, digital projects, online tools and technology platforms.</p>
+
+        <a href="contact.html">Request a Free Consultation</a>
+      </section>
+
+      <section id="about" class="footer-about">
+        <h2>About Vivitek</h2>
+        <p>Vivitek shares useful knowledge about health, news and technology.</p>
+        <p>Our mission is to make helpful information easier to discover.</p>
+      </section>
+
+      <div class="footer-links">
+        <a href="#about">About Us</a>
+        <a href="#consultation">Free Consultation</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+
+      <p>© 2026 Vivitek. All rights reserved.</p>
+      <p>Knowledge for Everyday Life</p>
+
+    </div>
   </footer>
-  
-<script>
-  const searchInput = document.getElementById("searchInput");
-  const searchMessage = document.getElementById("searchMessage");
-  const searchableCards = document.querySelectorAll("main .card");
 
-  searchInput.addEventListener("input", function () {
-    const query = this.value.trim().toLowerCase();
-    let matches = 0;
-
-    searchableCards.forEach(function (card) {
-      const found = card.innerText.toLowerCase().includes(query);
-      card.style.display = found ? "" : "none";
-      if (found) matches++;
-    });
-
-    if (query === "") {
-      searchMessage.textContent = "";
-    } else if (matches === 0) {
-      searchMessage.textContent = "No matching content found.";
-    } else {
-      searchMessage.textContent = matches + " matching section(s) found.";
-    }
-  });
-</script>
-<script>
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", () => {
-      navigator.serviceWorker.register("/Vivitek/sw.js")
-        .then(() => console.log("Vivitek service worker registered"))
-        .catch((error) => console.error("Service worker registration failed:", error));
-    });
-  }
-</script>
-
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const latestArticles = document.querySelectorAll(
-    "main .homepage-article"
-);
-
-  const notificationBell =
-    document.getElementById("notificationBell");
-
-  const notificationPanel =
-    document.getElementById("notificationPanel");
-
-  const closeNotificationPanel =
-    document.getElementById("closeNotificationPanel");
-
-  const notificationCount =
-    document.getElementById("notificationCount");
-
-  if (
-    !notificationBell ||
-    !notificationPanel ||
-    !closeNotificationPanel ||
-    !notificationCount
-  ) {
-    console.error("Vivitek notification elements are missing.");
-    return;
-  }
-
-  const articleLinks = [];
-
-  latestArticles.forEach(function (article) {
-    const link = article.querySelector('a[href$=".html"]');
-    const heading = article.querySelector("h3");
-
-    if (link && heading) {
-      articleLinks.push({
-        url: link.getAttribute("href"),
-        title: heading.textContent.trim()
-      });
-    }
-  });
-
-  const storageKey = "vivitekSeenArticles";
-  let seenArticles = [];
-
-  try {
-    const savedArticles = localStorage.getItem(storageKey);
-
-    if (savedArticles !== null) {
-      const parsedArticles = JSON.parse(savedArticles);
-
-      if (Array.isArray(parsedArticles)) {
-        seenArticles = parsedArticles;
-      } else {
-        seenArticles = articleLinks.map(article => article.url);
-      }
-    } else {
-      // First visit: do not mark existing articles as new.
-      seenArticles = articleLinks.map(article => article.url);
-
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify(seenArticles)
-      );
-    }
-  } catch (error) {
-    console.warn("Notification storage error:", error);
-  }
-  // Announce the new LRA article once on each device.
-  const announcementKey = "vivitekAnnouncementLRA2026";
-
-  try {
-    if (!localStorage.getItem(announcementKey)) {
-      seenArticles = seenArticles.filter(function (url) {
-        return url !== "lra-northern-uganda.html";
-      });
-
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify(seenArticles)
-      );
-
-      localStorage.setItem(announcementKey, "shown");
-    }
-  } catch (error) {
-    console.warn("Could not update LRA announcement:", error);
-  }
-  function updateNotifications() {
-    const newArticles = articleLinks.filter(function (article) {
-      return !seenArticles.includes(article.url);
-    });
-
-    notificationCount.textContent = newArticles.length;
-
-    notificationBell.setAttribute(
-      "aria-label",
-      "Recent article updates, " +
-      newArticles.length +
-      " new articles"
-    );
-
-    notificationPanel.innerHTML =
-      '<h3 style="margin-top:0;">Recent Updates</h3>';
-
-    if (newArticles.length === 0) {
-      notificationPanel.innerHTML +=
-        "<p>No new articles yet.</p>";
-    } else {
-      newArticles.forEach(function (article) {
-        const item = document.createElement("p");
-        const link = document.createElement("a");
-
-        link.href = article.url;
-        link.textContent = article.title;
-
-        item.appendChild(link);
-        notificationPanel.appendChild(item);
-      });
-    }
-
-    notificationPanel.appendChild(closeNotificationPanel);
-  }
-
-  function markArticlesAsSeen() {
-    seenArticles = articleLinks.map(function (article) {
-      return article.url;
-    });
-
-    try {
-      localStorage.setItem(
-        storageKey,
-        JSON.stringify(seenArticles)
-      );
-    } catch (error) {
-      console.warn("Could not save viewed articles:", error);
-    }
-
-    updateNotifications();
-  }
-
-  function closePanel() {
-    notificationPanel.hidden = true;
-    notificationPanel.style.display = "none";
-    markArticlesAsSeen();
-  }
-
-  updateNotifications();
-
-  notificationBell.addEventListener("click", function () {
-    if (notificationPanel.hidden) {
-      updateNotifications();
-      notificationPanel.hidden = false;
-      notificationPanel.style.display = "block";
-    } else {
-      closePanel();
-    }
-  });
-
-  closeNotificationPanel.addEventListener("click", function () {
-    closePanel();
-  });
-});
-  </script>
-  <script src="display-settings.js"></script>
   <script>
-(function () {
-  const sports = ["football", "basketball", "cricket", "tennis"];
+    const searchInput = document.getElementById("searchInput");
+    const searchMessage = document.getElementById("searchMessage");
+    const searchableCards = document.querySelectorAll("main .card");
 
-  const livePanel = document.getElementById("sports-live-scores");
-  const resultsPanel = document.getElementById("sports-results");
+    searchInput.addEventListener("input", function () {
+      const query = this.value.trim().toLowerCase();
+      let matches = 0;
 
-  if (!livePanel || !resultsPanel) return;
-  livePanel.querySelector("p").textContent =
-  "Sports script started. Connecting to live data...";
-
-  function addText(parent, tag, text) {
-    const element = document.createElement(tag);
-    element.textContent = text;
-    parent.appendChild(element);
-    return element;
-  }
-
-  function isFinished(match) {
-    const status = (
-      (match.status || "") + " " + (match.status_text || "")
-    ).toLowerCase();
-
-    return /finished|final|ended|full time/.test(status);
-  }
-
-  function isLive(match) {
-    const status = (
-      (match.status || "") + " " + (match.status_text || "")
-    ).toLowerCase();
-
-    return /live|in.play|in_play|1st|2nd|half|quarter|period|set|overtime/.test(status);
-  }
-
-  function displayMatches(panel, heading, matches, mode) {
-    panel.replaceChildren(heading);
-
-    const grouped = document.createElement("div");
-    panel.appendChild(grouped);
-
-    let displayed = 0;
-
-    sports.forEach(function (sport) {
-      const sportMatches = matches[sport] || [];
-      const selected = sportMatches.filter(function (match) {
-        return mode === "live" ? isLive(match) : isFinished(match);
+      searchableCards.forEach(function (card) {
+        const found = card.innerText.toLowerCase().includes(query);
+        card.style.display = found ? "" : "none";
+        if (found) matches++;
       });
 
-      if (!selected.length) return;
-
-      addText(grouped, "h4",
-        sport.charAt(0).toUpperCase() + sport.slice(1)
-      );
-
-      selected.slice(0, 8).forEach(function (match) {
-        const row = document.createElement("p");
-        const competition = match.competition
-          ? match.competition + " — "
-          : "";
-
-        const score =
-          (match.home_score ?? "-") + " : " +
-          (match.away_score ?? "-");
-
-        row.textContent =
-          competition +
-          (match.home || "Home") + " " + score + " " +
-          (match.away || "Away") +
-          (match.status_text ? " (" + match.status_text + ")" : "");
-
-        grouped.appendChild(row);
-        displayed++;
-      });
+      if (query === "") {
+        searchMessage.textContent = "";
+      } else if (matches === 0) {
+        searchMessage.textContent = "No matching content found.";
+      } else {
+        searchMessage.textContent = matches + " matching section(s) found.";
+      }
     });
+  </script>
 
-    if (!displayed) {
-      addText(
-        grouped,
-        "p",
-        mode === "live"
-          ? "No live matches are currently listed."
-          : "No completed results are currently listed."
-      );
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/Vivitek/sw.js")
+          .then(() => console.log("Vivitek service worker registered"))
+          .catch((error) => console.error("Service worker registration failed:", error));
+      });
     }
+  </script>
 
-    addText(
-      panel,
-      "small",
-      "Checked: " + new Date().toLocaleTimeString()
-    );
-  }
-  async function updateFixtures() {
-    const container = document.getElementById("sports-fixtures-data");
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const latestArticles = document.querySelectorAll(
+        "main .homepage-article"
+      );
 
-    if (!container) return;
+      const notificationBell =
+        document.getElementById("notificationBell");
 
-    container.textContent = "Loading upcoming fixtures...";
+      const notificationPanel =
+        document.getElementById("notificationPanel");
 
-    const today = new Date().toISOString().slice(0, 10);
-    const output = document.createDocumentFragment();
-    let total = 0;
+      const closeNotificationPanel =
+        document.getElementById("closeNotificationPanel");
 
-    for (const sport of sports) {
+      const notificationCount =
+        document.getElementById("notificationCount");
+
+      if (
+        !notificationBell ||
+        !notificationPanel ||
+        !closeNotificationPanel ||
+        !notificationCount
+      ) {
+        console.error("Vivitek notification elements are missing.");
+        return;
+      }
+
+      const articleLinks = [];
+
+      latestArticles.forEach(function (article) {
+        const link = article.querySelector('a[href$=".html"]');
+        const heading = article.querySelector("h3");
+
+        if (link && heading) {
+          articleLinks.push({
+            url: link.getAttribute("href"),
+            title: heading.textContent.trim()
+          });
+        }
+      });
+
+      const storageKey = "vivitekSeenArticles";
+      let seenArticles = [];
+
       try {
-        const url =
-          "https://sportscore.com/api/v1/fixtures/?sport=" +
-          sport + "&date=" + today + "&status=upcoming&limit=20";
+        const savedArticles = localStorage.getItem(storageKey);
 
-        const response = await fetch(url);
-        if (!response.ok) throw new Error("Request failed");
+        if (savedArticles !== null) {
+          const parsedArticles = JSON.parse(savedArticles);
 
-        const data = await response.json();
-        const fixtures = Array.isArray(data)
-          ? data
-          : Array.isArray(data.fixtures)
-            ? data.fixtures
-            : Array.isArray(data.matches)
-              ? data.matches
-              : [];
+          if (Array.isArray(parsedArticles)) {
+            seenArticles = parsedArticles;
+          } else {
+            seenArticles = articleLinks.map(article => article.url);
+          }
+        } else {
+          // First visit: do not mark existing articles as new.
+          seenArticles = articleLinks.map(article => article.url);
 
-        if (!fixtures.length) continue;
-
-        const heading = document.createElement("h4");
-        heading.textContent =
-          sport.charAt(0).toUpperCase() + sport.slice(1);
-        output.appendChild(heading);
-
-        fixtures.slice(0, 8).forEach(function (match) {
-          const item = document.createElement("p");
-          item.textContent =
-            (match.competition || "") + " — " +
-            (match.home || match.home_team || "Home") +
-            " vs " +
-            (match.away || match.away_team || "Away") +
-            (match.time ? " (" + match.time + ")" : "");
-
-          output.appendChild(item);
-          total++;
-        });
+          localStorage.setItem(
+            storageKey,
+            JSON.stringify(seenArticles)
+          );
+        }
       } catch (error) {
-        console.error("Fixture feed error:", sport, error);
-      }
-    }
-
-    container.replaceChildren();
-
-    if (!total) {
-      const message = document.createElement("p");
-      message.textContent =
-        "No upcoming fixtures are available for today.";
-      container.appendChild(message);
-    } else {
-      container.appendChild(output);
-    }
-    }
-  
-  async function updateStandings() {
-    const container = document.getElementById("sports-standings-data");
-    if (!container) return;
-
-    container.textContent = "Loading Premier League standings...";
-
-    try {
-      const response = await fetch(
-        "https://sportscore.com/api/widget/standings/?sport=football&slug=english-premier-league"
-      );
-
-      if (!response.ok) {
-        throw new Error("Standings request failed");
+        console.warn("Notification storage error:", error);
       }
 
-      const data = await response.json();
-      const teams = Array.isArray(data.teams) ? data.teams : [];
+      // Announce the new LRA article once on each device.
+      const announcementKey = "vivitekAnnouncementLRA2026";
 
-      container.replaceChildren();
+      try {
+        if (!localStorage.getItem(announcementKey)) {
+          seenArticles = seenArticles.filter(function (url) {
+            return url !== "lra-northern-uganda.html";
+          });
 
-      if (!teams.length) {
-  container.textContent =
-    "Diagnostic: " + JSON.stringify({
-      keys: Object.keys(data),
-      teamsType: typeof data.teams,
-      teamsIsArray: Array.isArray(data.teams)
-    });
-  return;
+          localStorage.setItem(
+            storageKey,
+            JSON.stringify(seenArticles)
+          );
+
+          localStorage.setItem(announcementKey, "shown");
+        }
+      } catch (error) {
+        console.warn("Could not update LRA announcement:", error);
       }
 
-      const title = document.createElement("h4");
-      title.textContent = "English Premier League";
-      container.appendChild(title);
-
-      const table = document.createElement("table");
-      table.style.width = "100%";
-      table.style.borderCollapse = "collapse";
-
-      const headers = ["Pos", "Team", "W", "D", "L", "GF", "GA", "GD", "Pts"];
-      const thead = document.createElement("thead");
-      const headerRow = document.createElement("tr");
-
-      headers.forEach(function (heading) {
-        const th = document.createElement("th");
-        th.textContent = heading;
-        th.style.padding = "8px";
-        th.style.borderBottom = "2px solid #123b65";
-        th.style.textAlign = "left";
-        headerRow.appendChild(th);
-      });
-
-      thead.appendChild(headerRow);
-      table.appendChild(thead);
-
-      const tbody = document.createElement("tbody");
-
-      teams.forEach(function (team) {
-        const row = document.createElement("tr");
-        const values = [
-          team.p, team.team, team.w, team.d, team.l,
-          team.gf, team.ga, team.gd, team.pts
-        ];
-
-        values.forEach(function (value) {
-          const cell = document.createElement("td");
-          cell.textContent = value ?? "—";
-          cell.style.padding = "8px";
-          cell.style.borderBottom = "1px solid #ddd";
-          row.appendChild(cell);
+      function updateNotifications() {
+        const newArticles = articleLinks.filter(function (article) {
+          return !seenArticles.includes(article.url);
         });
 
-        tbody.appendChild(row);
-      });
+        notificationCount.textContent = newArticles.length;
 
-      table.appendChild(tbody);
-
-      const wrapper = document.createElement("div");
-      wrapper.style.overflowX = "auto";
-      wrapper.appendChild(table);
-      container.appendChild(wrapper);
-
-    } catch (error) {
-      console.error("Standings feed error:", error);
-      container.textContent = "League standings could not be loaded. Please try again later.";
-    }
-  }
-
-  async function updateSports() {
-    const matches = {};
-
-    await Promise.all(sports.map(async function (sport) {
-      try {
-        const response = await fetch(
-          "https://sportscore.com/api/widget/matches/?sport=" +
-          sport + "&limit=20"
+        notificationBell.setAttribute(
+          "aria-label",
+          "Recent article updates, " +
+          newArticles.length +
+          " new articles"
         );
 
-        if (!response.ok) throw new Error("Request failed");
+        notificationPanel.innerHTML =
+          '<h3 style="margin-top:0;">Recent Updates</h3>';
 
-        const data = await response.json();
-        matches[sport] = Array.isArray(data.matches)
-          ? data.matches
-          : [];
-      } catch (error) {
-        matches[sport] = [];
-        console.error("Sports feed error:", sport, error);
+        if (newArticles.length === 0) {
+          notificationPanel.innerHTML +=
+            "<p>No new articles yet.</p>";
+        } else {
+          newArticles.forEach(function (article) {
+            const item = document.createElement("p");
+            const link = document.createElement("a");
+
+            link.href = article.url;
+            link.textContent = article.title;
+
+            item.appendChild(link);
+            notificationPanel.appendChild(item);
+          });
+        }
+
+        notificationPanel.appendChild(closeNotificationPanel);
       }
-    }));
 
-    const liveHeading = livePanel.querySelector("h3").cloneNode(true);
-    const resultsHeading = resultsPanel.querySelector("h3").cloneNode(true);
+      function markArticlesAsSeen() {
+        seenArticles = articleLinks.map(function (article) {
+          return article.url;
+        });
 
-    displayMatches(livePanel, liveHeading, matches, "live");
-    displayMatches(resultsPanel, resultsHeading, matches, "results");
-  }
+        try {
+          localStorage.setItem(
+            storageKey,
+            JSON.stringify(seenArticles)
+          );
+        } catch (error) {
+          console.warn("Could not save viewed articles:", error);
+        }
 
-  updateSports();
-updateFixtures();
-updateStandings();
+        updateNotifications();
+      }
 
-setInterval(updateSports, 120000);
-setInterval(updateFixtures, 120000);
-setInterval(updateStandings, 120000);
-})();
+      function closePanel() {
+        notificationPanel.hidden = true;
+        notificationPanel.style.display = "none";
+        markArticlesAsSeen();
+      }
+
+      updateNotifications();
+
+      notificationBell.addEventListener("click", function () {
+        if (notificationPanel.hidden) {
+          updateNotifications();
+          notificationPanel.hidden = false;
+          notificationPanel.style.display = "block";
+        } else {
+          closePanel();
+        }
+      });
+
+      closeNotificationPanel.addEventListener("click", function () {
+        closePanel();
+      });
+    });
   </script>
+
+  <script src="display-settings.js"></script>
 
 </body>
 </html>
+
