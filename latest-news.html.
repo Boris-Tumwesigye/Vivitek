@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b65">
+  <title>Latest News | Vivitek</title>
+  <meta name="description" content="Read the latest news from Uganda, South Sudan and around the world on Vivitek.">
+  <link rel="icon" href="icon-192.png">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="display-settings.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #263238;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #123b65;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+    }
+
+    nav {
+      background: #092b4a;
+      padding: 12px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 5px 10px;
+      display: inline-block;
+    }
+
+    .settings {
+      text-align: center;
+      padding: 12px;
+      background: white;
+    }
+
+    .settings label {
+      margin: 0 10px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 30px 15px;
+      background: #e3edf7;
+    }
+
+    .hero h2 {
+      color: #123b65;
+      margin-bottom: 8px;
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .articles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.09);
+    }
+
+    .card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 17px;
+    }
+
+    .card h3 {
+      color: #123b65;
+      margin-top: 0;
+    }
+
+    .card p {
+      color: #555;
+    }
+
+    .card a {
+      display: inline-block;
+      background: #123b65;
+      color: white;
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 5px;
+      margin-top: 8px;
+    }
+
+    .card a:hover {
+      background: #205b91;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 25px 0;
+      color: #123b65;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #092b4a;
+      color: white;
+      text-align: center;
+      padding: 22px 12px;
+      margin-top: 25px;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 8px;
+    }
+
+    body.dark-mode {
+      background: #121820;
+      color: #eeeeee;
+    }
+
+    body.dark-mode .settings,
+    body.dark-mode .card {
+      background: #202b38;
+      color: #eeeeee;
+    }
+
+    body.dark-mode .hero {
+      background: #1b2b3d;
+    }
+
+    body.dark-mode .hero h2,
+    body.dark-mode .card h3,
+    body.dark-mode .back-link {
+      color: #8fc5ff;
+    }
+
+    body.dark-mode .card p {
+      color: #dddddd;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      .container {
+        padding: 12px;
+      }
+
+      .card img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Vivitek</h1>
+  <p>Knowledge for Everyday Life</p>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="health-articles.html">Health</a>
+  <a href="latest-news.html">News</a>
+  <a href="technology.html">Technology</a>
+  <a href="weather.html">Weather</a>
+  <a href="advertise.html">Advertise With Us</a>
+</nav>
+
+<div class="settings">
+  <label>
+    <input type="checkbox" id="darkModeToggle">
+    Dark Mode
+  </label>
+  <label>
+    <input type="checkbox" id="desktopViewToggle">
+    Desktop View
+  </label>
+</div>
+
+<section class="hero">
+  <h2>Latest News</h2>
+  <p>News, developments and important stories from Uganda, South Sudan and around the world.</p>
+</section>
+
+<main class="container">
+
+  <section class="articles">
+
+    <article class="card">
+      <img src="Images/kcca-children-rescue.jpg" alt="KCCA child rescue operation">
+      <div class="card-content">
+        <h3>KCCA Rescues 114 Children</h3>
+        <p>A report on the Kampala Capital City Authority operation involving children in need of protection.</p>
+        <a href="kcca-rescues-114-children.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/updf-soldiers-in-mogadishu.jpg" alt="Ugandan soldiers serving in Somalia">
+      <div class="card-content">
+        <h3>Uganda and the Somalia Withdrawal</h3>
+        <p>Developments concerning Uganda's military deployment and its role in Somalia.</p>
+        <a href="uganda-somalia-withdrawal.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/new-karuma-bridge-design.jpeg" alt="Karuma Bridge">
+      <div class="card-content">
+        <h3>Uganda's Karuma Bridge</h3>
+        <p>Updates on the Karuma Bridge and its importance to transport and regional connectivity.</p>
+        <a href="karuma-bridge.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/kamuntu-parliament-session.jpeg" alt="Ugandan parliamentary proceedings">
+      <div class="card-content">
+        <h3>Uganda Gazettes Detention Facilities</h3>
+        <p>Developments following assurances made to Parliament concerning gazetted detention facilities.</p>
+        <a href="uganda-gazetted-detention.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/bentui-humanitarian-aid.jpg.webp" alt="Humanitarian situation in South Sudan">
+      <div class="card-content">
+        <h3>South Sudan: Aid Cuts Put Displaced People at Risk</h3>
+        <p>How reductions in humanitarian assistance affect displaced communities and vulnerable families.</p>
+        <a href="south-sudan-aid-cuts.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=900" alt="Agricultural fields in Uganda">
+      <div class="card-content">
+        <h3>Uganda's Purple-Fleshed Sweet Potato Varieties</h3>
+        <p>Exploring agricultural developments involving purple-fleshed sweet potato varieties in Uganda.</p>
+        <a href="news-article.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900" alt="Healthcare professional">
+      <div class="card-content">
+        <h3>UK Announces Health Aid Funding</h3>
+        <p>Coverage of the announced UK health funding and its implications for healthcare support.</p>
+        <a href="uk-health-aid.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/libya-2011-revolution.jpg" alt="Libya 2011 revolution">
+      <div class="card-content">
+        <h3>Libya's 2011 Revolution</h3>
+        <p>A look back at the revolution that transformed Libya and its political history.</p>
+        <a href="libya-gaddafi-revolution.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="man-utd-fans.png" alt="Manchester United supporters">
+      <div class="card-content">
+        <h3>Manchester United vs Bournemouth</h3>
+        <p>Match coverage and analysis from the Premier League meeting between Manchester United and Bournemouth.</p>
+        <a href="man-utd-vs-bournemouth.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="SSudan-14-Dec-2018.jpg" alt="South Sudan">
+      <div class="card-content">
+        <h3>South Sudan Elections 2026</h3>
+        <p>Coverage of election-related developments and the political process in South Sudan.</p>
+        <a href="south-sudan-elections-2026.html">Read Full Article</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="Images/joseph-kony-2006.jpg" alt="Historical image related to the Lord's Resistance Army">
+      <div class="card-content">
+        <h3>The LRA and Northern Uganda</h3>
+        <p>A historical overview of the Lord's Resistance Army conflict and its impact on northern Uganda.</p>
+        <a href="lra-northern-uganda.html">Read Full Article</a>
+      </div>
+    </article>
+
+  </section>
+
+  <a class="back-link" href="index.html">← Back to Vivitek Homepage</a>
+
+</main>
+
+<footer>
+  <p>Vivitek - Knowledge for Everyday Life</p>
+  <p>
+    <a href="contact.html">Contact Us</a> |
+    <a href="about.html">About Vivitek</a> |
+    <a href="advertise.html">Advertise With Us</a>
+  </p>
+  <p>© 2026 Vivitek. All rights reserved.</p>
+</footer>
+
+<script src="display-settings.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js");
+    });
+  }
+</script>
+
+</body>
+</html>
