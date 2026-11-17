@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#123b65">
+  <title>Health Articles | Vivitek</title>
+  <meta name="description" content="Explore health information, disease prevention, wellness and healthcare developments from Uganda, South Sudan and around the world.">
+
+  <link rel="icon" type="image/png" href="icon-192.png">
+  <link rel="manifest" href="/Vivitek/manifest.json">
+  <link rel="stylesheet" href="display-settings.css">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f7fb;
+      color: #243247;
+      line-height: 1.7;
+    }
+
+    header {
+      background: #102a43;
+      color: white;
+      text-align: center;
+      padding: 28px 16px;
+    }
+
+    header h1 {
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px;
+      background: white;
+    }
+
+    nav a {
+      color: #123b65;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    nav a:hover { background: #eaf1f8; }
+
+    .display-settings {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 14px;
+      background: #eaf1f8;
+      color: #123b65;
+    }
+
+    .display-settings label {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .page-intro {
+      background: linear-gradient(135deg, #102a43, #087e8b);
+      color: white;
+      text-align: center;
+      padding: 38px 18px;
+    }
+
+    .page-intro h2 {
+      margin-top: 0;
+      color: white;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 22px;
+    }
+
+    .article-card {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 14px rgba(16, 42, 67, 0.07);
+    }
+
+    .article-card img {
+      display: block;
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .article-card h3 {
+      color: #102a43;
+      margin-top: 0;
+      line-height: 1.4;
+    }
+
+    .article-card p {
+      color: #405166;
+    }
+
+    .article-card a {
+      color: #075bb5;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .article-card a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      display: inline-block;
+      background: #075bb5;
+      color: white;
+      padding: 11px 17px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: #123b65;
+      color: white;
+      text-align: center;
+      padding: 24px 16px;
+      margin-top: 30px;
+    }
+
+    footer a {
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    body.dark-mode {
+      background: #121820;
+      color: #e6edf5;
+    }
+
+    body.dark-mode nav,
+    body.dark-mode .article-card {
+      background: #1e2936;
+      color: #e6edf5;
+    }
+
+    body.dark-mode nav a,
+    body.dark-mode .article-card h3 {
+      color: #8fc5ff;
+    }
+
+    body.dark-mode .article-card p {
+      color: #d0dbe8;
+    }
+
+    body.dark-mode .display-settings {
+      background: #1e2936;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      main { padding: 13px; }
+
+      .article-card { padding: 15px; }
+
+      .article-card img { height: 180px; }
+
+      nav { gap: 5px; }
+
+      nav a {
+        padding: 7px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Vivitek</h1>
+    <p>Knowledge for Everyday Life</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#health">Health</a>
+    <a href="latest-news.html">News</a>
+    <a href="index.html#technology">Technology</a>
+    <a href="weather.html">Weather</a>
+    <a href="advertise.html">Advertise With Us</a>
+  </nav>
+
+  <div class="display-settings">
+    <label>
+      <input type="checkbox" id="darkModeToggle">
+      Dark Mode
+    </label>
+
+    <label>
+      <input type="checkbox" id="desktopModeToggle">
+      Desktop View
+    </label>
+  </div>
+
+  <section class="page-intro">
+    <h2>❤️ Health Articles</h2>
+    <p>Health knowledge, disease prevention and healthcare information for everyday life.</p>
+  </section>
+
+  <main>
+
+    <a class="back-link" href="index.html">← Back to Homepage</a>
+
+    <article class="article-card">
+      <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=900&auto=format&fit=crop&q=80"
+        alt="Healthy living and healthcare" loading="lazy">
+      <h3>5 Simple Ways to Stay Healthy Every Day</h3>
+      <p>Discover everyday habits that can support your health and wellbeing.</p>
+      <a href="health-article.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&auto=format&fit=crop&q=80"
+        alt="A variety of healthy foods and fresh vegetables" loading="lazy">
+      <h3>Understanding Blood Pressure: History, Measurement and Its Importance</h3>
+      <p>Discover how blood pressure is measured, causes of hypertension and ways to protect your heart.</p>
+      <a href="blood-pressure.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=900&auto=format&fit=crop&q=80"
+        alt="Healthcare professional conducting a medical blood test" loading="lazy">
+      <h3>Syphilis: Causes, Symptoms, Diagnosis and Treatment</h3>
+      <p>Learn about transmission, symptoms, laboratory diagnosis, treatment and prevention of syphilis.</p>
+      <a href="syphilis.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="uganda-health-review.jpg"
+        alt="Uganda health sector performance review" loading="lazy">
+      <h3>Uganda Reports Progress Against Malaria and HIV, but Healthcare Financing Remains a Challenge</h3>
+      <p>Uganda's 2025/26 health performance report highlights progress against malaria, HIV and tuberculosis, alongside continuing funding and staffing challenges.</p>
+      <a href="uganda-health-performance.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="image-19.png"
+        alt="Launch of South Sudan's National Cancer Registry in Juba" loading="lazy">
+      <h3>South Sudan Launches First National Cancer Registry in Juba</h3>
+      <p>South Sudan has launched its first National Population-Based Cancer Registry at Juba Teaching Hospital to improve cancer data collection and health planning.</p>
+      <a href="south-sudan-cancer-registry.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="https://wwwn.cdc.gov/phil/PHIL_Images/7950/7950_lores.jpg"
+        alt="Anopheles mosquito feeding on human skin" loading="lazy">
+      <p>Photo: James Gathany, CDC/PHIL.</p>
+      <h3>Malaria: Symptoms, Prevention and When to Seek Treatment</h3>
+      <p>Learn about malaria symptoms, mosquito-bite prevention, treatment and warning signs.</p>
+      <a href="malaria.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="https://images.unsplash.com/photo-1669139470813-827cbcf54b20?w=900&auto=format&fit=crop&q=80"
+        alt="A glass being filled with clean drinking water from a tap" loading="lazy">
+      <h3>Typhoid Fever: Symptoms, Prevention and Treatment</h3>
+      <p>Learn about typhoid symptoms, diagnosis, treatment and how to prevent infection.</p>
+      <a href="typhoid.html">Read Full Article →</a>
+    </article>
+
+    <article class="article-card">
+      <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=900&auto=format&fit=crop&q=80"
+        alt="Public health and infectious disease prevention" loading="lazy">
+      <h3>Ebola Disease: Symptoms, Transmission and Prevention</h3>
+      <p>Learn how Ebola spreads, recognize possible symptoms and understand prevention and urgent medical guidance.</p>
+      <a href="ebola.html">Read Full Article →</a>
+    </article>
+
+    <p>
+      <a class="back-link" href="index.html">← Return to Vivitek Homepage</a>
+    </p>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Vivitek. All rights reserved.</p>
+    <p>Knowledge for Everyday Life</p>
+    <p>
+      <a href="index.html">Home</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="index.html#about">About Vivitek</a>
+    </p>
+  </footer>
+
+  <script src="display-settings.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("/Vivitek/sw.js")
+          .catch(function (error) {
+            console.error("Service worker registration failed:", error);
+          });
+      });
+    }
+  </script>
+
+</body>
+</html>
