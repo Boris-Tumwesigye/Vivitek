@@ -425,6 +425,110 @@
   }
 }
 
+/* Vivitek Featured Stories Carousel */
+.featured-carousel {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.featured-slide {
+  display: none;
+  grid-template-columns: 1.1fr 1fr;
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+}
+
+.featured-slide.active {
+  display: grid;
+}
+
+.featured-slide img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.featured-content {
+  padding: 28px;
+  align-self: center;
+}
+
+.featured-content h2 {
+  color: #123b65;
+}
+
+.featured-content a {
+  display: inline-block;
+  padding: 11px 18px;
+  background: #075bb5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  padding: 14px;
+}
+
+.carousel-controls button {
+  border: none;
+  background: #123b65;
+  color: white;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: none;
+  background: #aab7c4;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background: #075bb5;
+}
+
+body.dark-mode .featured-slide {
+  background: #1e2936;
+  color: #e6edf5;
+}
+
+body.dark-mode .featured-content h2 {
+  color: #8fc5ff;
+}
+
+@media (max-width: 650px) {
+  .featured-slide {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-slide img {
+    height: 190px;
+  }
+
+  .featured-content {
+    padding: 18px;
+  }
+}
+
   </style>
 
   <script type="application/ld+json">
